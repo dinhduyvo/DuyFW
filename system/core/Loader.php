@@ -486,6 +486,11 @@ class CI_Loader {
 	 */
 	public function view($view, $vars = array(), $return = FALSE)
 	{
+		//DuyVD1
+		if(strpos($view,".") !== false){
+			$view = DUYTEMPLATE.str_replace(".","",$view);
+		}
+		//DuyVD1 end
 		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 	}
 
