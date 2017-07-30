@@ -1,0 +1,64 @@
+html {
+  background: #fadf1b;
+}
+body {
+  background: none;
+}
+
+.navbar {
+  min-height: 20px;
+  border-style: double;
+  border-width: 3px 0px;
+  border-color: #ffee71;
+  margin-bottom: 10px;
+}
+.navbar-brand {
+  padding: 8px;
+  height: 26px;
+}
+.navbar-nav > li > a {
+  padding: 8px;
+}
+.navbar-toggle {
+  padding: 2px;
+}
+.banner .logo {
+  background: url("../images/logo.png");
+  height: 49px;
+  width: 266px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.banner .slogan {
+  margin: auto;
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.topmenu {
+  border-style: double;
+  border-width: 3px 0px;
+  border-color: #ffee71;
+  height: 36px;
+}
+
+
+.bg-faded {
+  background: none;
+}
+
+.navbar-toggler {
+  padding: 0.2rem 0.75rem;
+}
+
+.navbar-toggler-icon{
+  height: 20px;
+}
+
+.div-container{
+  border-radius: 5px;
+  background: #ffee71;
+  padding: 5px;
+}
