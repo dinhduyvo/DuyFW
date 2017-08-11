@@ -977,7 +977,7 @@ class Ion_auth_model extends CI_Model
 		                  ->limit(1)
 		    			  ->order_by('id', 'desc')
 		                  ->get($this->tables['users']);
-
+		//echo $password."-".$this->hash_password($password);
 		if($this->is_max_login_attempts_exceeded($identity))
 		{
 			// Hash something anyway, just to take up time

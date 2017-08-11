@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends MY_Controller {
 
 	public function __construct()
 	{
@@ -64,7 +64,7 @@ class Auth extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('Home', 'refresh');
 			}
 			else
 			{
@@ -520,8 +520,11 @@ class Auth extends CI_Controller {
     }
 
 	// edit a user
-	public function edit_user($id)
+	public function edit_user($id ='')
 	{
+		if($id == ''){
+			$id = $this->ion_auth->user()->row()->id;
+		}
 		$this->data['title'] = $this->lang->line('edit_user_heading');
 
 		if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id)))
@@ -599,7 +602,7 @@ class Auth extends CI_Controller {
 					}
 					else
 					{
-						redirect('/', 'refresh');
+						redirect('Home', 'refresh');
 					}
 
 			    }
@@ -810,8 +813,8 @@ class Auth extends CI_Controller {
 	{
 
 		$this->viewdata = (empty($data)) ? $this->data: $data;
-
-		$view_html = $this->load->view($view, $this->viewdata, $returnhtml);
+		$this->data['view'] = $view;
+		$view_html = $this->load->view(".layout", $this->data, $returnhtml);
 
 		if ($returnhtml) return $view_html;//This will return html on 3rd argument being true
 	}
