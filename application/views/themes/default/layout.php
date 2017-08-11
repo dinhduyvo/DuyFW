@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Cổng thông tin ĐBSCL - <?=isset($title)?$title:""?></title>
 	<?php $this->load->view('common'); ?>
 </head>
 <body>
@@ -20,21 +20,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">WebSiteName</a>
+			<a class="navbar-brand" href="#"></a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Page 1-1</a></li>
-						<li><a href="#">Page 1-2</a></li>
-						<li><a href="#">Page 1-3</a></li>
-					</ul>
+				<?php
+				$iflag = 0;
+				foreach ($menus as $menu) {
+					if($menu["childnum"] == 0 && $menu["parent"] == "") {
+						if($iflag == 1){
+							echo "</ul>
+						</li>";
+						}
+						$iflag = 0;
+						?>
+						<li><a href="<?=$this->mu->createMenuLink($menu)?>"><?=$menu["title"]?></a></li>
+						<?php
+					}
+					else if ($menu["childnum"] > 0 && $menu["parent"] == ""){
+						if($iflag == 1){
+							echo "</ul></li>";
+						}
+						$iflag = 1;
+						?>
+
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="<?=$this->mu->createMenuLink($menu)?>"><?=$menu["title"]?> <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+						<?php
+					}
+					else {
+						?>
+								<li><a href="<?=$this->mu->createMenuLink($menu)?>"><?=$menu["title"]?></a></li>
+						<?php
+					}
+				}
+				if($iflag == 1){
+					echo "</ul>
+				</li>";
+				}
+				 ?>
+
+
+
+
 				</li>
-				<li><a href="#">Page 2</a></li>
-				<li><a href="#">Page 3</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -44,18 +74,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </nav>
 <div class="col-md-12 container">
-	<div class="col-md-6 ">
-		<div class="div-container">
-			sdas
-		</div>
+	<div class="<?=isset($viewright)?"col-md-6":"col-md-12"?>">
+
+			<?php
+      if (isset ( $view )) {
+          $this->load->view ( $view );
+      }
+			else {
+				echo "Trang chưa được thiết lập!";
+			}
+      ?>
 
 	</div>
+	<?php
+	if (isset ( $viewright )) {
+	?>
 	<div class="col-md-6 ">
 		<div class="div-container">
-			sdas
+			<?php
+          $this->load->view ( $viewright );
+      ?>
 		</div>
 	</div>
-
+	<?php
+	}
+	 ?>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 

@@ -85,3 +85,13 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('DUYTEMPLATE','themes/default/');
+
+define('PAGE_TYPES', array(
+            array("name" => "Trang tĩnh", "code"=>"static"),
+            array("name" => "Liên kết", "code"=>"link"),
+            array("name" => "Controller", "code"=>"controller")
+    ));
+define('DISPLAY_TYPES', array(
+            array("name" => "Hiển thị", "code"=>"1"),
+            array("name" => "Ẩn", "code"=>"0")
+    ));
