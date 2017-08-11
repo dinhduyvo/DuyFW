@@ -12,6 +12,7 @@
                     );
   echo $this->mf->createFunctionButtons($buttons) ?>
   <?php echo $this->mf->createSelectMultipleFull("pages", $pages,  $current, "Trang", "200px"); ?>
+  <?php echo $this->mf->createHidden("pageaction", "add")?>
   <?php echo $this->mf->closeForm();?>
 </div>
 <div class="col-md-8">
@@ -54,6 +55,14 @@ $(document).ready(function() {
 
   $("#pages").dblclick(function(event) {
     $('#leftform').submit();
+  });
+
+  $("#btnDelete").click(function(event) {
+    var f = function() {
+      $("#pageaction").val("delete");
+      $("#leftform").submit();
+    };
+    confirmDelete(f);
   });
 });
 </script>

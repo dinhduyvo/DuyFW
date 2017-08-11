@@ -31,7 +31,16 @@ class AdminPage extends MY_Controller {
 		}
 
 		if ($this->input->post('pages') != null) {
-			redirect("AdminPage/index/id/".$this->input->post('pages')[0]);
+			if($this->input->post('pageaction') == "delete"){
+				foreach ($this->input->post('pages') as $id) {
+					$this->doDelete($id);
+				}
+				redirect($this->uri->uri_string());
+			}
+			else {
+				redirect("AdminPage/index/id/".$this->input->post('pages')[0]);
+			}
+
 		}
 		if (isset($this->params['id'])) {
 			$this->data["current"] = array($this->params['id']);
@@ -103,6 +112,13 @@ class AdminPage extends MY_Controller {
 		$id = R::store($page);
 
 		redirect($this->uri->uri_string());
+
+	}
+
+	private function doDelete($id)
+	{
+		$page = R::load('dpages', $id);
+		R::trash($page);
 
 	}
 }
