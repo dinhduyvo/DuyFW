@@ -455,14 +455,7 @@ class Mu {
       		<script src="'.base_url().'res/plugins/validation/localization/messages_vi.js"></script>';
           break;
         case 'ckeditor':
-          echo '<script src="'.base_url().'res/js/ckeditor/ckeditor.js"></script>
-          <script>CKEDITOR.config.toolbar = [
-                                 ["NumberedList","BulletedList","Bold","Italic", "Strike", "Blockquote", "HorizontalRule", "Maximize"]
-                                  ];
-                  CKEDITOR.config.skin = "office2013";
-                  CKEDITOR.config.removePlugins = "elementspath";
-                  CKEDITOR.config.language = "vi";
-                  CKEDITOR.config.resize_enabled = false;</script>';
+          echo '<script src="'.base_url().'assets/js/ckeditor/ckeditor.js"></script>';
           break;
         case 'ckeditorfull':
           echo '<script src="'.base_url().'res/js/ckeditor/ckeditor.js"></script>
@@ -698,6 +691,9 @@ class Mu {
     {
       if($menu["type"]=="controller"){
         return site_url($menu["link"]);
+      }
+      elseif($menu["type"]=="static"){
+        return site_url('Trang/index/i/'.$menu["link_name"]);
       }
       return site_url('pages/'.$menu['link_name']);
     }

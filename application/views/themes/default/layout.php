@@ -85,7 +85,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<?php
       if (isset ( $view )) {
-          $this->load->view ( $view );
+					foreach ($view as $vitem) {
+						$this->load->view ( $vitem );
+					}
+
       }
 			else {
 				echo "Trang chưa được thiết lập!";
@@ -99,7 +102,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="col-md-6 ">
 		<div class="div-container">
 			<?php
-          $this->load->view ( $viewright );
+					foreach ($viewright as $vitem) {
+						$this->load->view ( $vitem );
+					}
       ?>
 		</div>
 	</div>

@@ -14,11 +14,16 @@ class AdminPage extends MY_Controller {
 	public function index()
 	{
 		$this->data["title"] = "Quản lý trang";
-		$this->data['view'] = "admin/AdminPage";
+		$this->data['view'] = array("admin/AdminPage");
 
-		$parents = R::getAll( "SELECT id as code, title as name FROM DPages Where parent is null Order By disorder asc" );
+		$parents = R::getAll( "SELECT id as code, title as name
+													FROM DPages Where parent is null Order By disorder asc" );
 		$this->data["parents"] = $parents;
-		$pages = R::getAll( "SELECT id as code, CASE WHEN parent is null THEN title ELSE concat('........ ',title) END as name FROM DPages Order By disorder asc" );
+		$pages = R::getAll( "SELECT id as code, CASE
+																								WHEN parent is null THEN concat('【',display,'】', title)
+																								ELSE concat('　ᗒ ',concat('【',display,'】', title))
+																						END as name
+												FROM DPages Order By disorder asc" );
 		$this->data["pages"] = $pages;
 
 

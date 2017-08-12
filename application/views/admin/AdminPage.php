@@ -1,3 +1,12 @@
+<?php $this->mu->jsInclude("ckeditor");?>
+<script>
+        CKEDITOR.config.skin = "office2013";
+        CKEDITOR.config.removePlugins = "elementspath";
+        CKEDITOR.config.language = "vi";
+        CKEDITOR.config.resize_enabled = false;
+        CKEDITOR.config.extraPlugins = 'uploadimage';
+        CKEDITOR.config.filebrowserUploadUrl = '<?=site_url("Home/upload")?>';
+</script>
 <div class="div-container col-md-12">
 <span class="head_title"><span class="glyphicon glyphicon-modal-window text-warning"></span> Quản lý trang</span>
 
@@ -11,7 +20,7 @@
                       array('id' => 'btnDown', 'url' => '#','type' => 'primary', 'icon' => 'arrow-down'),
                     );
   echo $this->mf->createFunctionButtons($buttons) ?>
-  <?php echo $this->mf->createSelectMultipleFull("pages", $pages,  $current, "Trang", "200px"); ?>
+  <?php echo $this->mf->createSelectMultipleFull("pages", $pages,  $current, "Trang", "350px"); ?>
   <?php echo $this->mf->createHidden("pageaction", "add")?>
   <?php echo $this->mf->closeForm();?>
 </div>
@@ -44,8 +53,17 @@
 								50)?>
   <?php echo $this->mf->createSelectFull("parent", $parents,  isset($data)&&(!$isposted)?$data->parent:set_value('parent'), "Trang cha", "--- Chọn trang cha ---", false); ?>
   <?php echo $this->mf->createRadio("Hiển thị","display", DISPLAY_TYPES, isset($data)&&(!$isposted)?$data->display:set_value('display'),  true, true);?>
+
+  <?php echo $this->mf->createEditor(
+				        'about',
+				        isset($data)&&(!$isposted)?$data->title:set_value('about'),
+				        'Giới thiệu',
+				        false,
+				        true);?>
+
   <?php echo $this->mf->createHidden("id", isset($data)?$data["id"]:"0")?>
   <?php echo $this->mf->createButtons("reset")?>
+
   <?php echo $this->mf->closeForm();?>
 </div>
 
