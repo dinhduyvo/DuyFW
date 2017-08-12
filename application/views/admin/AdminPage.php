@@ -1,5 +1,5 @@
 <div class="div-container col-md-12">
-<span class="head_title">Quản lý trang</span>
+<span class="head_title"><span class="glyphicon glyphicon-modal-window text-warning"></span> Quản lý trang</span>
 
 <div class="col-md-4">
   <?php echo $this->mf->openForm("", "leftform");?>
@@ -54,6 +54,17 @@
 $(document).ready(function() {
 
   $("#pages").dblclick(function(event) {
+    $("#pageaction").val("");
+    $('#leftform').submit();
+  });
+
+  $("#btnUp").click(function(event) {
+    $("#pageaction").val("up");
+    $('#leftform').submit();
+  });
+
+  $("#btnDown").click(function(event) {
+    $("#pageaction").val("down");
     $('#leftform').submit();
   });
 

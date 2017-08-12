@@ -37,6 +37,12 @@ class AdminPage extends MY_Controller {
 				}
 				redirect($this->uri->uri_string());
 			}
+			elseif ($this->input->post('pageaction') == "up") {
+				$this->doUp();
+			}
+			elseif ($this->input->post('pageaction') == "down") {
+				$this->doDown();
+			}
 			else {
 				redirect("AdminPage/index/id/".$this->input->post('pages')[0]);
 			}
@@ -121,4 +127,68 @@ class AdminPage extends MY_Controller {
 		R::trash($page);
 
 	}
+
+	private function doUp()
+	{
+		$pages = $this->input->post('pages');
+		foreach ($pages as $pageid) {
+			$page = R::load("dpages", $pageid);
+			if($page->parent == ""){
+				$upTmp = R::findOne("dpages", " parent is null and disorder < ? order by disorder desc ",[$page->disorder]);
+			}
+			else {
+				$upTmp = R::findOne("dpages", " parent = ? and disorder < ? order by disorder desc ",[$page->parent, $page->disorder]);
+			}
+
+			if($upTmp != null){
+				$up = R::load("dpages", $upTmp->id);
+				$backupPage = $page->disorder;
+				$backupUp = $up->disorder;
+				$page->disorder = $up->disorder;
+				$up->disorder = $backupPage;
+
+				R::store($page);
+				R::store($up);
+				if($page->parent == ""){
+					R::exec("UPDATE dpages SET disorder = concat(?,RIGHT(disorder,4)) WHERE parent = ?",[substr($backupUp,0,4), $page->id]);
+					R::exec("UPDATE dpages SET disorder = concat(?,RIGHT(disorder,4)) WHERE parent = ?",[substr($backupPage,0,4), $up->id]);
+				}
+
+			}
+		}
+		redirect($this->uri->uri_string());
+	}
+
+	private function doDown()
+	{
+		$pages = $this->input->post('pages');
+		for ($i=count($pages) - 1; $i >= 0; $i--) {
+			$pageid = $pages[$i];
+			$page = R::load("dpages", $pageid);
+			if($page->parent == ""){
+				$downTmp = R::findOne("dpages", " parent is null and disorder > ? order by disorder asc ",[$page->disorder]);
+			}
+			else {
+				$downTmp = R::findOne("dpages", " parent = ? and disorder > ? order by disorder asc ",[$page->parent, $page->disorder]);
+			}
+
+			if($downTmp != null){
+				$down = R::load("dpages", $downTmp->id);
+				$backupPage = $page->disorder;
+				$backupDown = $down->disorder;
+				$page->disorder = $down->disorder;
+				$down->disorder = $backupPage;
+
+				R::store($page);
+				R::store($down);
+				if($page->parent == ""){
+					R::exec("UPDATE dpages SET disorder = concat(?,RIGHT(disorder,4)) WHERE parent = ?",[substr($backupDown,0,4), $page->id]);
+					R::exec("UPDATE dpages SET disorder = concat(?,RIGHT(disorder,4)) WHERE parent = ?",[substr($backupPage,0,4), $down->id]);
+				}
+
+			}
+		}
+		redirect($this->uri->uri_string());
+	}
+
 }
