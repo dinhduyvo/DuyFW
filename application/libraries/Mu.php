@@ -694,7 +694,7 @@ class Mu {
         return site_url($menu["link"]);
       }
       elseif($menu["type"]=="static"){
-        return site_url('Trang/index/i/'.$menu["link_name"]);
+        return site_url('Trang/i/'.$menu["link_name"]);
       }
       return site_url('pages/'.$menu['link_name']);
     }

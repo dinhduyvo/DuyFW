@@ -17,4 +17,14 @@ class Trang extends MY_Controller {
 		$this->data['dcontents'] = $beans['dcontents'];
 		$this->load->view('.layout', $this->data);
 	}
+
+	public function i($id)
+	{
+		$beans = R::findMulti('dpages,dcontents',
+									"SELECT dpages.*, dcontents.* FROM dpages INNER JOIN dcontents ON dpages.id = dcontents.pageid
+									WHERE dpages.link_name = ?",[$id]);
+		$this->data['dpages'] = reset($beans['dpages']);
+		$this->data['dcontents'] = reset($beans['dcontents']);
+		$this->load->view('.layout', $this->data);
+	}
 }

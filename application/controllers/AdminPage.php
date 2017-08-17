@@ -132,6 +132,18 @@ class AdminPage extends MY_Controller {
 		$page->display = $this->input->post('display');
 		$id = R::store($page);
 
+		if($this->input->post('type') == "static") {
+
+			$content = R::findOne("dcontents", " pageid = ? ",[$this->input->post('id')]);
+			if($content == null){
+				$content = R::dispense("dcontents");
+			}
+			$content->title = $this->input->post('contenttitle');
+			$content->content = $this->input->post('content');
+			$content->pageid = $this->input->post('id');
+			R::store($content);
+		}
+
 		redirect($this->uri->uri_string());
 
 	}
