@@ -813,7 +813,7 @@ class Auth extends MY_Controller {
 	{
 
 		$this->viewdata = (empty($data)) ? $this->data: $data;
-		$this->data['view'] = $view;
+		$this->data['view'] = array($view);
 		$view_html = $this->load->view(".layout", $this->data, $returnhtml);
 
 		if ($returnhtml) return $view_html;//This will return html on 3rd argument being true

@@ -1,10 +1,5 @@
 <?php $this->mu->jsInclude("ckeditor");?>
 <script>
-        CKEDITOR.config.skin = "office2013";
-        CKEDITOR.config.removePlugins = "elementspath";
-        CKEDITOR.config.language = "vi";
-        CKEDITOR.config.resize_enabled = false;
-        CKEDITOR.config.extraPlugins = 'uploadimage';
         CKEDITOR.config.filebrowserUploadUrl = '<?=site_url("Home/upload")?>';
 </script>
 <div class="div-container col-md-12">
@@ -53,14 +48,22 @@
 								50)?>
   <?php echo $this->mf->createSelectFull("parent", $parents,  isset($data)&&(!$isposted)?$data->parent:set_value('parent'), "Trang cha", "--- Chọn trang cha ---", false); ?>
   <?php echo $this->mf->createRadio("Hiển thị","display", DISPLAY_TYPES, isset($data)&&(!$isposted)?$data->display:set_value('display'),  true, true);?>
-
+  <span id="staticdiv">
+  <?php echo $this->mf->createTextBox(
+				        'contenttitle',
+				        isset($datacontent)&&(!$isposted)?$datacontent["title"]:set_value('contenttitle'),
+				        'Tiêu đề nội dung',
+				        false,
+				        true,
+				        '',
+								100)?>
   <?php echo $this->mf->createEditor(
-				        'about',
-				        isset($data)&&(!$isposted)?$data->title:set_value('about'),
-				        'Giới thiệu',
+				        'content',
+				        isset($datacontent)&&(!$isposted)?$datacontent["content"]:set_value('content'),
+				        'Nội dung',
 				        false,
 				        true);?>
-
+  </span>
   <?php echo $this->mf->createHidden("id", isset($data)?$data["id"]:"0")?>
   <?php echo $this->mf->createButtons("reset")?>
 
@@ -92,6 +95,24 @@ $(document).ready(function() {
       $("#leftform").submit();
     };
     confirmDelete(f);
+  });
+
+  if($("#type").val() == "static"){
+    $("#staticdiv").attr('display', 'block');
+
+  }
+  else{
+    $("#staticdiv").attr('style', 'display:none');
+  }
+
+  $("#type").change(function(event) {
+    if($("#type").val() == "static"){
+      $("#staticdiv").attr('style', 'display:block');
+
+    }
+    else{
+      $("#staticdiv").attr('style', 'display:none');
+    }
   });
 });
 </script>

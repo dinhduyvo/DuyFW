@@ -67,7 +67,9 @@ class AdminPage extends MY_Controller {
 	{
 		$id = $this->params['id'];
 		$page = R::findOne('dpages','id=?',[$id]);
+		$content = R::findOne('dcontents','pageid=?',[$id]);
 		$this->form_data = $page;
+		$this->data["datacontent"] = $content;
 	}
 
 	private function doAdd()
@@ -94,6 +96,14 @@ class AdminPage extends MY_Controller {
 		$page->link = $this->input->post('link');
 		$page->display = $this->input->post('display');
 		$id = R::store($page);
+
+		if($this->input->post('type') == "static") {
+			$content = R::dispense("dcontents");
+			$content->title = $this->input->post('contenttitle');
+			$content->content = $this->input->post('content');
+			$content->pageid = $id;
+			R::store($content);
+		}
 
 		redirect($this->uri->uri_string());
 

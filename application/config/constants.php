@@ -85,6 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('DUYTEMPLATE','themes/default/');
+define("DATE_INSERT_FORMAT", "%Y-%m-%d %H:%i:%s");
 
 define('PAGE_TYPES', array(
             array("name" => "Trang tĩnh", "code"=>"static"),

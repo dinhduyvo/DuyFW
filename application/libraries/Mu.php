@@ -456,6 +456,7 @@ class Mu {
           break;
         case 'ckeditor':
           echo '<script src="'.base_url().'assets/js/ckeditor/ckeditor.js"></script>';
+          echo '<script src="'.base_url().'assets/js/ckeditor/config.js"></script>';
           break;
         case 'ckeditorfull':
           echo '<script src="'.base_url().'res/js/ckeditor/ckeditor.js"></script>
@@ -696,5 +697,28 @@ class Mu {
         return site_url('Trang/index/i/'.$menu["link_name"]);
       }
       return site_url('pages/'.$menu['link_name']);
+    }
+
+    public function dolog($type1, $id, $type2, $note='') {
+        $time = time ();
+        $currenttime = mdate ( DATE_INSERT_FORMAT, $time );
+        if($type2 == "INSERT"){
+          $log = R::dispense('dhistory');
+          //$log->createdate = $currenttime;
+          $log->createuser = $this->CI->ion_auth->get_user_id();
+          $log->note = $note;
+          $log->id = $id;
+          $log->type = $type1;
+          $log->idtmp = $type1.$id;
+          R::store($log);
+        }
+        elseif($type2 == "UPDATE"){
+          $log = R::findOne('dhistory','id = ? and type = ?',[$id, $type1]);
+          $log->updatedate = $currenttime;
+          $log->udateuser = $this->CI->ion_auth->get_user_id();
+          $log->note = $note;
+          $log->id = $id;
+          R::store($log);
+        }
     }
 }
