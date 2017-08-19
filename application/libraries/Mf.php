@@ -525,10 +525,10 @@ class Mf {
       return $html.'</div>';
     }
 
-    public function createButtons($type, $previouspage="", $updateText = "Cập nhật", $cancelText = "Bỏ qua"){
+    public function createButtons($type, $previouspage="", $updateText = "Cập nhật", $cancelText = "Trở về"){
         $html = '<div class="form-group"><hr/><div class="col-sm-12">';
 		if($type=="back") {
-			$html .= '<button class="btn btn-default" type="button" onclick="javascript:window.location.replace(\''.site_url($previous).'\')">'.$cancelText.'</button>';
+			$html .= '<button class="btn btn-default" type="button" onclick="javascript:window.location.replace(\''.site_url($previouspage).'\')">'.$cancelText.'</button>';
 		}
 		elseif($type=="reset"){
 			$html .= '<button class="btn btn-default" type="reset">Nhập lại</button>';

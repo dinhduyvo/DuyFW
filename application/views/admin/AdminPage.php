@@ -114,5 +114,6 @@ $(document).ready(function() {
       $("#staticdiv").attr('style', 'display:none');
     }
   });
+  
 });
 </script>

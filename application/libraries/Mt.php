@@ -106,10 +106,10 @@ class Mt {
 	}
 
 	private function editIcon($siteurl, $code=0, $editcontroller,  $icon='edit'){
-	    return '<a href="'.site_url($siteurl.'/'.$editcontroller.'/code/'.$code).'"><i class="fa fa-fw fa-'.$icon.'"></i></a>';
+	    return '<a href="'.site_url($siteurl.'/update/'.$code).'"><li class="glyphicon glyphicon-edit"></li></a>';
 	}
 	private function deleteIcon($siteurl, $code=0, $icon='close'){
-	    return '<a onclick="return confirmDelete()" href="'.site_url($siteurl.'/delete/code/'.$code).'"><i class="fa fa-fw fa-'.$icon.'"></i></a>';
+	    return '<a id="btnDelete" onclick="return confirm2()" href="'.site_url($siteurl.'/delete/'.$code).'"><li class="glyphicon glyphicon-remove"></li></a>';
 	}
 
 }

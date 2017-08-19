@@ -96,3 +96,12 @@ define('DISPLAY_TYPES', array(
             array("name" => "Hiển thị", "code"=>"1"),
             array("name" => "Ẩn", "code"=>"0")
     ));
+define("FILE_IMAGE_MAX_SIZE", 1000);
+define("FILE_IMAGE_URL", FCPATH."/"."upload/imgs");
+define("FILE_IMAGE_PATH_NEWS", FILE_IMAGE_URL."/news");
+define("FILE_IMAGE_EXTENTION", 'png|gif|jpg|PNG');
+define("FILE_IMAGE_EXTENTION_JS", '["jpg","png"]');
+define("FILE_IMAGE_MAX_WIDTH", 3000);
+define("FILE_IMAGE_MAX_HEIGHT", 2000);
+define("MAX_FILE_UPLOAD", 100);
+define("MAX_FILE_EXTENTION", 'gif|jpg|png');

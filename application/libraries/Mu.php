@@ -426,8 +426,8 @@ class Mu {
 
       switch ($type) {
         case 'fileinput':
-          echo '<link rel="stylesheet" href="'.base_url().'res/js/fileinput/fileinput.min.css">
-          <script src="'.base_url().'res/js/fileinput/fileinput.min.js"></script>';
+          echo '<link rel="stylesheet" href="'.base_url().'assets/js/fileinput/fileinput.min.css">
+          <script src="'.base_url().'assets/js/fileinput/fileinput.min.js"></script>';
           break;
         case 'datepicker':
           echo '<link href="'.base_url().'res/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
@@ -451,8 +451,8 @@ class Mu {
       		<script src="'.base_url().'res/plugins/input-mask/jquery.inputmask.extensions.js"></script>';
           break;
         case 'validation':
-          echo '<script src="'.base_url().'res/plugins/validation/jquery.validate.min.js"></script>
-      		<script src="'.base_url().'res/plugins/validation/localization/messages_vi.js"></script>';
+          echo '<script src="'.base_url().'assets/plugins/validation/jquery.validate.min.js"></script>
+      		<script src="'.base_url().'assets/plugins/validation/localization/messages_vi.js"></script>';
           break;
         case 'ckeditor':
           echo '<script src="'.base_url().'assets/js/ckeditor/ckeditor.js"></script>';
@@ -694,7 +694,7 @@ class Mu {
         return site_url($menu["link"]);
       }
       elseif($menu["type"]=="static"){
-        return site_url('Trang/i/'.$menu["link_name"]);
+        return site_url('trang/i/'.$menu["link_name"]);
       }
       return site_url('pages/'.$menu['link_name']);
     }

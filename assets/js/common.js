@@ -1,5 +1,6 @@
 function confirmDelete(func) {
   $.confirm({
+      theme: 'material',
       title: 'Xác nhận xóa',
       content: 'Bạn có chắc chắn muốn xóa?',
       type: 'blue',
@@ -17,4 +18,7 @@ function confirmDelete(func) {
           }
       }
   });
+}
+function confirm2(){
+  return (confirm("Bạn có chắc?"));
 }
