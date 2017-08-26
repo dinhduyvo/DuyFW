@@ -84,7 +84,7 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-define('DUYTEMPLATE','themes/default/');
+define('DUYTEMPLATE','themes/simple/');
 define("DATE_INSERT_FORMAT", "%Y-%m-%d %H:%i:%s");
 
 define('PAGE_TYPES', array(
@@ -95,10 +95,16 @@ define('PAGE_TYPES', array(
 define('DISPLAY_TYPES', array(
             array("name" => "Hiển thị", "code"=>"1"),
             array("name" => "Ẩn", "code"=>"0")
+          ));
+define('DISPLAY_TYPES_NEWS', array(
+            array("name" => "Hiển thị", "code"=>"1"),
+            array("name" => "Ẩn", "code"=>"0"),
+            array("name" => "Nổi bật", "code"=>"2")
     ));
 define("FILE_IMAGE_MAX_SIZE", 1000);
-define("FILE_IMAGE_URL", FCPATH."/"."upload/imgs");
-define("FILE_IMAGE_PATH_NEWS", FILE_IMAGE_URL."/news");
+define("FILE_IMAGE_URL", "upload/imgs");
+define("FILE_IMAGE_PATH_NEWS", FCPATH."/".FILE_IMAGE_URL."/news");
+define("FILE_IMAGE_URL_NEWS", "upload/imgs/news");
 define("FILE_IMAGE_EXTENTION", 'png|gif|jpg|PNG');
 define("FILE_IMAGE_EXTENTION_JS", '["jpg","png"]');
 define("FILE_IMAGE_MAX_WIDTH", 3000);

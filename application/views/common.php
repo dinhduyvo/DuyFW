@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="<?=base_url()?>assets/bootstrap3/css/bootstrap.css" />
 <link rel="stylesheet" href="<?=base_url()?>assets/css/jquery-confirm.css" />
 <link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/layout.css" />
+<link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/mobile.css" />
+<link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/desktop.css" />
 <!-- DataTables -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
 <script src="<?=base_url()?>assets/js/tether.min.js"></script>

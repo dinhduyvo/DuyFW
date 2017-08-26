@@ -433,10 +433,10 @@ class Mf {
     /*
      * Create file upload input
      */
-    public function createFileUpload($id, $extentions, $label, $isrequired, $maxsize = 0, $showerror =false,  $placeholder="", $value=""){
+    public function createFileUpload($id, $extentions, $label, $isrequired, $maxsize = 0, $showerror =false,  $placeholder="", $value="", $image_url=FILE_IMAGE_URL){
         $html = '<div class="form-group '.(form_error($id)!=""?'has-error':'').'">
 					<label class="col-sm-3 control-label" for="'.$id.'">'.($isrequired?'<font class="text-red">*</font> ':'<font>&nbsp;</font>').$label.': </label>
-					<div class="col-sm-9"> '.($value!= ""?'<img src="'.base_url().FILE_IMAGE_URL.'/'.$value.'" class="file-preview-image" height="150px">':'');
+					<div class="col-sm-9"> '.($value!= ""?'<img src="'.base_url().$image_url.'/'.$value.'" class="file-preview-image" height="150px">':'');
         $html .= '<input id="'.$id.'" name="'.$id.'" type="file" class="file"
                 data-show-upload="false"
                 data-show-caption="true"
@@ -461,9 +461,9 @@ class Mf {
     /*
      * Create file upload for image
      */
-    public function createImageUpload($id, $label, $isrequired = FALSE, $showerror=TRUE, $placeholder="", $value=""){
+    public function createImageUpload($id, $label, $isrequired = FALSE, $showerror=TRUE, $placeholder="", $value="", $image_url=FILE_IMAGE_URL){
         return $this->createFileUpload($id, FILE_IMAGE_EXTENTION_JS, $label,
-                $isrequired, FILE_IMAGE_MAX_SIZE, $showerror, $placeholder, $value);
+                $isrequired, FILE_IMAGE_MAX_SIZE, $showerror, $placeholder, $value, $image_url);
     }
 
     /*

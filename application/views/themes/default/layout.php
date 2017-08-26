@@ -113,7 +113,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 ?>
 </div>
 
-		Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?>
 
+		<footer class="navbar-default navbar-fixed-bottom">
+		  <div class="container-fluid">
+		    <span>Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></span>
+		  </div>
+		</footer>
 </body>
 </html>

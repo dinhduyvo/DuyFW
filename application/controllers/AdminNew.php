@@ -73,6 +73,15 @@ class AdminNew extends MY_Controller {
 	{
 		if($this->input->post('title') != null){
 			$item = R::dispense('dnews');
+
+			$filenameAvatar = "";
+      if(isset($_FILES['avatar']) && $_FILES['avatar']['size'] > 0) {
+          $output = $this->mu->do_upload_image ( 'avatar', 'av', FILE_IMAGE_PATH_NEWS );
+          $filenameAvatar = $output["data"];
+      }
+
+			$item->avatar = $filenameAvatar;
+
 			$item->title = $this->input->post('title');
 			$item->link_name = $this->input->post('link_name');
 			$item->author = $this->input->post('author');

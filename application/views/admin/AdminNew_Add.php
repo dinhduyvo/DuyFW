@@ -15,7 +15,10 @@
 				        true,
 				        true,
 				        '',
-								100)?>
+								255)?>
+  <div class="col-md-3"></div>
+  <div class="col-md-9"><span class="glyphicon glyphicon-arrow-down" id="ConvertLinkName"></span></div>
+
   <?php echo $this->mf->createTextBox(
 				        'link_name',
 				        isset($data)&&(!$isposted)?$data->link_name:set_value('link_name'),
@@ -23,14 +26,14 @@
 				        true,
 				        true,
 				        '',
-								50)?>
+								255)?>
   <?php echo $this->mf->createImageUpload(
 				        'avatar',
 				        'Hình ảnh đại diện (nếu có)',
 				        false,
 				        true,
 				        'Chọn file',
-				        isset($data)&&(!$isposted)?$data->avatar:''); ?>
+				        isset($data)&&(!$isposted)?$data->avatar:'',FILE_IMAGE_URL_NEWS); ?>
   <?php echo $this->mf->createTextBox(
 				        'author',
 				        isset($data)&&(!$isposted)?$data->author:set_value('author'),
@@ -48,7 +51,7 @@
 				        '',
 								100)?>
   <?php echo $this->mf->createSelectFull("cat_id", $categories,  isset($data)&&(!$isposted)?$data->cat_id:set_value('cat_id'), "Danh mục", "--- Chọn danh mục ---", true); ?>
-  <?php echo $this->mf->createRadio("Hiển thị","display", DISPLAY_TYPES, isset($data)&&(!$isposted)?$data->display:set_value('display'),  true, true);?>
+  <?php echo $this->mf->createRadio("Hiển thị","display", DISPLAY_TYPES_NEWS, isset($data)&&(!$isposted)?$data->display:set_value('display'),  true, true);?>
   <?php echo $this->mf->createEditor(
 				        'content',
 				        isset($data)&&(!$isposted)?$data->content:set_value('content'),
@@ -88,6 +91,9 @@ $(document).ready(function() {
     else{
       $("#staticdiv").attr('style', 'display:none');
     }
+  });
+  $("#ConvertLinkName").click(function(event) {
+    $("#link_name").val(ConvertLinkName($("#title").val()));
   });
   <?php $this->mu->jsValidate("myform", array("content")); ?>
 });
