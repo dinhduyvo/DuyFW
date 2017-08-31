@@ -205,6 +205,13 @@ div.row>a>.img-responsive {
 	color: #fff !important;
 	padding: 2px 5px;
 }
+.btn-detail {
+	position: absolute;
+	right: 22px;
+	font-size: 12px;
+	top: 7px;
+	padding: 2px 5px;
+}
 
 .navbar-default .navbar-brand {
   color: #CB4427;

@@ -58,6 +58,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					}
 					 ?>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<?php
+					if ($this->ion_auth->logged_in())
+					{
+					 ?>
+					<li><a href="<?=site_url("auth/edit_user")?>"><span class="glyphicon glyphicon-user"></span> Thông tin cá nhân</a></li>
+					<li><a href="<?=site_url("auth/logout")?>"><span class="glyphicon glyphicon-log-in"></span> Đăng xuất</a></li>
+					<?php
+					}
+					else {
+					 ?>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="<?=site_url("auth")?>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<?php } ?>
+				</ul>
 			</nav>
 		</div>
 	</header>

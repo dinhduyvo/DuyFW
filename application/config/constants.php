@@ -101,10 +101,19 @@ define('DISPLAY_TYPES_NEWS', array(
             array("name" => "Ẩn", "code"=>"0"),
             array("name" => "Nổi bật", "code"=>"2")
     ));
+define('LANGUAGE_LIST', array(
+            array("name" => "English", "code"=>"en"),
+            array("name" => "Japanese", "code"=>"jp"),
+            array("name" => "France", "code"=>"fr")
+    ));
 define("FILE_IMAGE_MAX_SIZE", 1000);
 define("FILE_IMAGE_URL", "upload/imgs");
 define("FILE_IMAGE_PATH_NEWS", FCPATH."/".FILE_IMAGE_URL."/news");
 define("FILE_IMAGE_URL_NEWS", "upload/imgs/news");
+define("FILE_IMAGE_PATH_JOBS", FCPATH."/".FILE_IMAGE_URL."/jobs");
+define("FILE_IMAGE_URL_JOBS", "upload/imgs/jobs");
+define("FILE_IMAGE_PATH_COMPANIES", FCPATH."/".FILE_IMAGE_URL."/coms");
+define("FILE_IMAGE_URL_COMPANIES", "upload/imgs/coms");
 define("FILE_IMAGE_EXTENTION", 'png|gif|jpg|PNG');
 define("FILE_IMAGE_EXTENTION_JS", '["jpg","png"]');
 define("FILE_IMAGE_MAX_WIDTH", 3000);

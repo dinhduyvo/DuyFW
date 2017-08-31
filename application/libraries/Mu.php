@@ -430,25 +430,25 @@ class Mu {
           <script src="'.base_url().'assets/js/fileinput/fileinput.min.js"></script>';
           break;
         case 'datepicker':
-          echo '<link href="'.base_url().'res/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
-          <script src="'.base_url().'res/plugins/datepicker/bootstrap-datepicker.js"></script>
-          <script src="'.base_url().'res/plugins/datepicker/locales/bootstrap-datepicker.vi.js"></script>';
+          echo '<link href="'.base_url().'assets/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
+          <script src="'.base_url().'assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+          <script src="'.base_url().'assets/plugins/datepicker/locales/bootstrap-datepicker.vi.js"></script>';
           break;
         case 'timepicker':
-          echo '<link rel="stylesheet" href="'.base_url().'res/plugins/timepicker/bootstrap-timepicker.min.css">
-          <script src="'.base_url().'res/plugins/timepicker/bootstrap-timepicker.min.js"></script>';
+          echo '<link rel="stylesheet" href="'.base_url().'assets/plugins/timepicker/bootstrap-timepicker.min.css">
+          <script src="'.base_url().'assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>';
           break;
         case 'maskmoney':
-          echo '<script src="'.base_url().'res/plugins/mask-money/jquery.maskMoney.js" type="text/javascript"></script>';
+          echo '<script src="'.base_url().'assets/plugins/mask-money/jquery.maskMoney.js" type="text/javascript"></script>';
           break;
         case 'selectmultiple':
           echo '<link rel="stylesheet" href="'.base_url().'res/plugins/select2/select2.min.css">
-                <script src="'.base_url().'res/plugins/select2/select2.full.min.js"></script>';
+                <script src="'.base_url().'assets/plugins/select2/select2.full.min.js"></script>';
           break;
         case 'inputmask':
-          echo '<script src="'.base_url().'res/plugins/input-mask/jquery.inputmask.js"></script>
-      		<script src="'.base_url().'res/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-      		<script src="'.base_url().'res/plugins/input-mask/jquery.inputmask.extensions.js"></script>';
+          echo '<script src="'.base_url().'assets/plugins/input-mask/jquery.inputmask.js"></script>
+      		<script src="'.base_url().'assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+      		<script src="'.base_url().'assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>';
           break;
         case 'validation':
           echo '<script src="'.base_url().'assets/plugins/validation/jquery.validate.min.js"></script>
@@ -459,7 +459,7 @@ class Mu {
           echo '<script src="'.base_url().'assets/js/ckeditor/config.js"></script>';
           break;
         case 'ckeditorfull':
-          echo '<script src="'.base_url().'res/js/ckeditor/ckeditor.js"></script>
+          echo '<script src="'.base_url().'assets/js/ckeditor/ckeditor.js"></script>
           '.$this->CI->mv->ckeditor_full;
           break;
 
@@ -522,7 +522,7 @@ class Mu {
     }
 
     public function arrayToString($myarray, $separator="|", $fullseparator =false){
-      if(!fullseparator) {
+      if(!$fullseparator) {
         return implode($separator, $myarray);
       }
       return $separator.implode($separator, $myarray).$separator;

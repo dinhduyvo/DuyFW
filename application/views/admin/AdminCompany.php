@@ -1,12 +1,13 @@
 <?php $this->mu->jsInclude("ckeditor");?>
+<?php $this->mu->jsInclude("fileinput"); ?>
 <script>
-        CKEDITOR.config.filebrowserUploadUrl = '<?=site_url("Util/upload")?>';
+        CKEDITOR.config.filebrowserUploadUrl = '<?=site_url("Home/upload")?>';
 </script>
 <div class="panel-group" role="tablist">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
   		<h4 class="panel-title">
-  			<span><span class="glyphicon glyphicon-modal-window text-warning"></span> Quản lý trang</span>
+  			<span><span class="glyphicon glyphicon-modal-window text-warning"></span> Quản lý Nhà tuyển dụng</span>
   		</h4>
   	</div>
     <div id="collapseOne" class="panel-collapse"
@@ -15,67 +16,50 @@
         <div class="col-md-4">
           <?php echo $this->mf->openForm("", "leftform");?>
           <?php $buttons = array(
-                              array('id' => 'btnAdd', 'url' => site_url('AdminPage'),'type' => 'success', 'icon' => 'plus'),
+                              array('id' => 'btnAdd', 'url' => site_url('AdminCompany'),'type' => 'success', 'icon' => 'plus'),
                               array('id' => 'btnEdit', 'url' => '#','type' => 'warning', 'icon' => 'edit'),
-                              array('id' => 'btnDelete', 'url' => '#','type' => 'danger', 'icon' => 'remove'),
-                              array('id' => 'btnUp', 'url' => '#','type' => 'primary', 'icon' => 'arrow-up'),
-                              array('id' => 'btnDown', 'url' => '#','type' => 'primary', 'icon' => 'arrow-down'),
+                              array('id' => 'btnDelete', 'url' => '#','type' => 'danger', 'icon' => 'remove')
                             );
           echo $this->mf->createFunctionButtons($buttons) ?>
-          <?php echo $this->mf->createSelectMultipleFull("pages", $pages,  $current, "Trang", "350px"); ?>
+          <?php echo $this->mf->createSelectMultipleFull("datas", $datas,  $current, "Trang", "350px"); ?>
           <?php echo $this->mf->createHidden("pageaction", "add")?>
           <?php echo $this->mf->closeForm();?>
         </div>
         <div class="col-md-8">
           <?php echo $this->mf->openForm("", "rightform");?>
           <?php echo $this->mf->createTextBox(
-        				        'title',
-        				        isset($data)&&(!$isposted)?$data->title:set_value('name'),
-        				        'Tên trang',
+        				        'name',
+        				        isset($data)&&(!$isposted)?$data->name:set_value('name'),
+        				        'Tên',
         				        true,
         				        true,
         				        '',
         								100)?>
-                        <div class="row">
-                          <div class="col-md-3"></div>
-                          <div class="col-md-9"><span class="glyphicon glyphicon-arrow-down" id="ConvertLinkName"></span></div>
-                        </div>
+          <div class="col-md-3"></div>
+          <div class="col-md-9"><span class="glyphicon glyphicon-arrow-down" id="ConvertLinkName2"></span></div>
           <?php echo $this->mf->createTextBox(
         				        'link_name',
-        				        isset($data)&&(!$isposted)?$data->link_name:set_value('name'),
+        				        isset($data)&&(!$isposted)?$data->link_name:set_value('link_name'),
         				        'Friendly URL',
         				        true,
         				        true,
         				        '',
         								50)?>
-          <?php echo $this->mf->createSelectFull("type", PAGE_TYPES,  isset($data)&&(!$isposted)?$data->type:set_value('type'), "Loại", "--- Chọn loại trang ---"); ?>
-          <?php echo $this->mf->createTextBox(
-        				        'link',
-        				        isset($data)&&(!$isposted)?$data->link:set_value('link'),
-        				        'Link',
+          <?php echo $this->mf->createImageUpload(
+        				        'avatar',
+        				        'Hình ảnh đại diện (nếu có)',
         				        false,
         				        true,
-        				        '',
-        								50)?>
-          <?php echo $this->mf->createSelectFull("parent", $parents,  isset($data)&&(!$isposted)?$data->parent:set_value('parent'), "Trang cha", "--- Chọn trang cha ---", false); ?>
+        				        'Chọn file',
+        				        isset($data)&&(!$isposted)?$data->avatar:'',FILE_IMAGE_URL_COMPANIES); ?>
           <?php echo $this->mf->createRadio("Hiển thị","display", DISPLAY_TYPES, isset($data)&&(!$isposted)?$data->display:set_value('display'),  true, true);?>
-          <span id="staticdiv">
-          <?php echo $this->mf->createTextBox(
-        				        'contenttitle',
-        				        isset($datacontent)&&(!$isposted)?$datacontent["title"]:set_value('contenttitle'),
-        				        'Tiêu đề nội dung',
-        				        false,
-        				        true,
-        				        '',
-        								100)?>
           <?php echo $this->mf->createEditor(
-        				        'content',
-        				        isset($datacontent)&&(!$isposted)?$datacontent["content"]:set_value('content'),
-        				        'Nội dung',
-        				        false,
+        				        'description',
+        				        isset($data)&&(!$isposted)?$data->description:set_value('description'),
+        				        'Mô tả',
+        				        true,
         				        true);?>
-          </span>
-          <?php echo $this->mf->createHidden("id", isset($data)?$data["id"]:"0")?>
+          <?php echo $this->mf->createHidden("id", isset($data)?$data->id:"0")?>
           <?php echo $this->mf->createButtons("reset")?>
 
           <?php echo $this->mf->closeForm();?>
@@ -87,7 +71,7 @@
 <script lang="javascript">
 $(document).ready(function() {
 
-  $("#pages").dblclick(function(event) {
+  $("#datas").dblclick(function(event) {
     $("#pageaction").val("");
     $('#leftform').submit();
   });
@@ -127,6 +111,8 @@ $(document).ready(function() {
       $("#staticdiv").attr('style', 'display:none');
     }
   });
-
+  $("#ConvertLinkName").click(function(event) {
+    $("#link_name").val(ConvertLinkName($("#title").val()));
+  });
 });
 </script>

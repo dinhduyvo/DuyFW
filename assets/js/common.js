@@ -39,3 +39,12 @@ function bodauTiengViet(str) {
         str = str.replace(/đ/g, "d");
         return str;
 }
+$(document).ready(function() {
+  $("#ConvertLinkName").click(function(event) {
+    $("#link_name").val(ConvertLinkName($("#title").val()));
+  });
+
+  $("#ConvertLinkName2").click(function(event) {
+    $("#link_name").val(ConvertLinkName($("#name").val()));
+  });
+});

@@ -268,7 +268,7 @@ class Mf {
 
             switch ($count){
                 case 2:
-                    $width = 6;
+                    $width = 3;
                     break;
                 case 3:
                     $width = 4;
@@ -282,7 +282,7 @@ class Mf {
                 $html .= '<div class="col-xs-'.$width.'">'.($isrequired[$i] ? '<font class="text-red">*</font> ' : '<font>&nbsp;</font> ').$label[$i].' <div class="input-group">';
                 if($icon[$i] != ''){
                     $html.='<div class="input-group-addon">
-                                        <i class="fa fa-'.$icon[$i].'"></i>
+                                        <i class="glyphicon glyphicon-'.$icon[$i].'"></i>
                                     </div>';
                 }
 
@@ -366,7 +366,7 @@ class Mf {
 
             $html .= '<div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
+                                        <i class="glyphicon glyphicon-calendar"></i>
                                     </div><input type="text" class="form-control"
                 id="' . $id . '" name="' . $id . '"
 				value="' . $value . '" '.($isrequired?"required":"").'/> ';

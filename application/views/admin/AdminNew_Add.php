@@ -92,9 +92,7 @@ $(document).ready(function() {
       $("#staticdiv").attr('style', 'display:none');
     }
   });
-  $("#ConvertLinkName").click(function(event) {
-    $("#link_name").val(ConvertLinkName($("#title").val()));
-  });
+  
   <?php $this->mu->jsValidate("myform", array("content")); ?>
 });
 </script>
