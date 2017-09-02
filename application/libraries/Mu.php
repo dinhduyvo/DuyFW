@@ -721,4 +721,22 @@ class Mu {
           R::store($log);
         }
     }
+
+    public function cutString($value, $length)
+    {
+      $value = strip_tags($value);
+      if (strlen($value) <= $length) {
+        return $value;
+      } else {
+
+        for ($i=$length-1; $i <strlen($value) ; $i++) {
+          if($value[$i] == " "){
+            $length = $i;
+            break;
+          }
+        }
+        return substr($value, 0, $length)."...";
+      }
+
+    }
 }

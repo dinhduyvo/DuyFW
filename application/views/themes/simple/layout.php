@@ -17,7 +17,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<?php echo site_url("");  ?>">MekongBox.vn   </a>
+				<a class="navbar-brand" href="<?php echo site_url("");  ?>">
+					<div class="logo">
+              <span class="l l1"></span>
+              <span class="l l2"></span>
+              <span class="l l3"></span>
+              <span class="l l4"></span>
+              <span class="l l5"></span>
+          </div>
+					MekongBox.vn   </a>
 			</div>
 			<nav class="collapse navbar-collapse" id="navbar-collapse-menu">
 				<ul class="nav navbar-nav navbar-left">
