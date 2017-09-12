@@ -16,22 +16,22 @@ class AdminLandCategory extends MY_Controller {
 		$this->data["title"] = "Quản lý Danh mục Bất động sản";
 		$this->data['view'] = array("admin/AdminLandCategory");
 
-		$parents = R::getAll( "SELECT id as code, title as name
+		$parents = R::getAll( "SELECT id as code, name as name
 													FROM dlandcategories Where parent is null Order By disorder asc" );
 		$this->data["parents"] = $parents;
 		$datas = R::getAll( "SELECT id as code, CASE
-																								WHEN parent is null THEN concat('【',display,'】', title)
-																								ELSE concat('　ᗒ ',concat('【',display,'】', title))
+																								WHEN parent is null THEN concat('【',display,'】', name)
+																								ELSE concat('　ᗒ ',concat('【',display,'】', name))
 																						END as name
 												FROM dlandcategories Order By disorder asc" );
 		$this->data["datas"] = $datas;
 
 
 
-		if($this->input->post('title') != null && $this->input->post('id') > 0){
+		if($this->input->post('name') != null && $this->input->post('id') > 0){
 			$this->doUpdate();
 		}
-		else if($this->input->post('title') != null){
+		else if($this->input->post('name') != null){
 			$this->doAdd();
 		}
 
@@ -73,7 +73,7 @@ class AdminLandCategory extends MY_Controller {
 	private function doAdd()
 	{
 		$item = R::dispense('dlandcategories');
-		$item->title = $this->input->post('title');
+		$item->name = $this->input->post('name');
 		$item->link_name = $this->input->post('link_name');
 		$item->type = $this->input->post('type');
 		if ($this->input->post('parent')>0) {
@@ -102,7 +102,7 @@ class AdminLandCategory extends MY_Controller {
 	private function doUpdate()
 	{
 		$item = R::load( 'dlandcategories', $this->input->post('id'));
-		$item->title = $this->input->post('title');
+		$item->name = $this->input->post('name');
 		$item->link_name = $this->input->post('link_name');
 		$item->type = $this->input->post('type');
 		if ($this->input->post('parent')>0) {

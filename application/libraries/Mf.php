@@ -46,31 +46,62 @@ class Mf {
     	echo '</div>';
     }
 
-    public function createSelect($name, $data, $value, $defaultText="...", $isrequired = true) {
+    public function createSelect($name, $data, $value, $defaultText="...", $isrequired = true, $dogroup=false) {
         $html = '<select class="form-control" name="' . $name . '" id="' . $name . '" '.($isrequired?"required":"").'>';
         if($defaultText != null) {
             $html .= '<option value="">'.$defaultText.'</option>';
         }
         if ($data != null) {
+            $currentgroup = "";
             foreach ( $data as $item ) {
                 if(isset($item->code)){
                     $code = $item->code;
                     $itemname = $item->name;
+                    if($dogroup){
+                        $parent = $item->parent;
+                    }
                 }
                 else{
                     $code = $item["code"];
                     $itemname = $item["name"];
+                    if($dogroup){
+                        $parent = $item["parent"];
+                    }
                 }
-                if($code == $value){
-                    $html .= '<option selected value="' . $code . '">' . $itemname . '</option>';
+
+                if($dogroup && $parent == null){
+                    if($currentgroup == ""){
+                        $html .= '<optgroup label="'.$itemname.'">';
+                    }
+                    else{
+                        $html .= '</optgroup><optgroup label="'.$itemname.'">';
+                    }
+                    $currentgroup = $code;
                 }
-                else {
-                    $html .= '<option value="' . $code . '">' . $itemname . '</option>';
+                
+                if (($dogroup && $parent != null) || (!$dogroup)) {
+                    if($code == $value){
+                        $html .= '<option selected value="' . $code . '">' . $itemname . '</option>';
+                    }
+                    else {
+                        $html .= '<option value="' . $code . '">' . $itemname . '</option>';
+                    }
                 }
+                
+                
+            }
+            if($dogroup && $currentgroup != ""){
+                $html .= '</optgroup>';
             }
         }
 
         $html .= '           </select>';
+        $html .= '<script>
+        $("#'.$name.'").select2({
+          placeholder: "'.$defaultText.'",
+          allowClear: true
+        });
+        </script>';
         return $html;
     }
 
@@ -87,8 +118,8 @@ class Mf {
 
     }
 
-    public function createSelectFull($id, $data, $value, $label, $defaultText="...", $isrequired = true, $showerror=true){
-        $tmp = $this->createSelect($id, $data, $value, $defaultText, $isrequired);
+    public function createSelectFull($id, $data, $value, $label, $defaultText="...", $isrequired = true, $showerror=true, $dogroup=false){
+        $tmp = $this->createSelect($id, $data, $value, $defaultText, $isrequired, $dogroup);
 
         $html = '<div class="form-group '.(form_error($id)!=""?'has-error':'').'">
 					<label class="col-sm-3 control-label" for="'.$id.'">'.($isrequired?'<font class="text-red">*</font> ':'<font>&nbsp;</font>').$label.': </label>
@@ -251,7 +282,7 @@ class Mf {
         return $html;
     }
 
-    public function createManyTextBox($mainlabel, $id, $value, $label, $isrequired, $showerror, $placeholder, $icon, $maxlength, $minlength){
+    public function createManyTextBox($mainlabel, $id, $value, $label, $isrequired, $showerror, $placeholder, $icon, $maxlength, $minlength, $type='text'){
         $count = count($id);
             $isError = false;
 
@@ -286,7 +317,7 @@ class Mf {
                                     </div>';
                 }
 
-                $html .= '<input type="text" class="form-control"
+                $html .= '<input type="'.$type[$i].'" class="form-control"
                         placeholder="'.$placeholder[$i].'"
                         id="'.$id[$i].'" name="'.$id[$i].'" maxlength="'.$maxlength[$i].'" minlength="'.$minlength[$i].'"
         				value="'.$value[$i].'" '.($isrequired[$i]?"required":"").'/>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminNew extends MY_Controller {
+class AdminLand extends MY_Controller {
 
 	var $form_data;
 
@@ -13,9 +13,9 @@ class AdminNew extends MY_Controller {
 
 	public function index()
 	{
-		$this->data["title"] = "Quản lý Tin tức";
-		$this->data['view'] = array("admin/AdminNew");
-		$datas = R::findAll( "dnews", ' order by public_date desc ' );
+		$this->data["title"] = "Quản lý Bất động sản";
+		$this->data['view'] = array("admin/AdminLand");
+		$datas = R::findAll( "dlands", ' order by public_from desc ' );
 
 
 		$this->data["datas"] = $this->danhsach($datas);
@@ -58,9 +58,12 @@ class AdminNew extends MY_Controller {
           foreach ( $datas as $row ) {
               // ***
               $tmp [0] = $row->title;
-              $tmp [1] = $this->mu->showVNDate($row->public_date);
-              $tmp [2] = $row->author;
-              $tmp [3] = $row->id;
+              $tmp [1] = $row->address;
+              $tmp [2] = $row->phone;
+              $tmp [3] = $this->mu->formatMoney($row->price);
+              $tmp [4] = $this->mu->showVNDate($row->public_from);
+              $tmp [5] = $this->mu->showVNDate($row->public_to);
+              $tmp [6] = $row->id;
               $output [$i] = $tmp;
               $i ++;
           }
@@ -72,11 +75,11 @@ class AdminNew extends MY_Controller {
 	public function doAdd()
 	{
 		if($this->input->post('title') != null){
-			$item = R::dispense('dnews');
+			$item = R::dispense('dlands');
 
 			$filenameAvatar = "";
       if(isset($_FILES['avatar']) && $_FILES['avatar']['size'] > 0) {
-          $output = $this->mu->do_upload_image ( 'avatar', 'av', FILE_IMAGE_PATH_NEWS );
+          $output = $this->mu->do_upload_image ( 'avatar', 'av', FILE_IMAGE_PATH_LANDS );
           $filenameAvatar = $output["data"];
       }
 
@@ -84,20 +87,29 @@ class AdminNew extends MY_Controller {
 
 			$item->title = $this->input->post('title');
 			$item->link_name = $this->input->post('link_name');
-			$item->author = $this->input->post('author');
-			$item->source = $this->input->post('source');
-			$item->cat_id = $this->input->post('cat_id');
-			$item->content = $this->input->post('content');
+			$item->description = $this->input->post('description');
+			$item->price = $this->mu->getDataMoney($this->input->post('price'));
+			$item->address = $this->input->post('address');
+			$item->contacter = $this->input->post('contacter');
+			$item->phone = $this->input->post('phone');
+			$item->public_from = $this->mu->changeDateTimeFormat($this->input->post('public_from'));
+			$item->public_to = $this->mu->changeDateTimeFormat($this->input->post('public_to'));
+			$item->width = $this->input->post('width');
+			$item->long = $this->input->post('long');
+			$item->livesize = $this->input->post('livesize');
+			$item->mapx = $this->input->post('mapx');
+			$item->mapy = $this->input->post('mapy');
+			$item->type = $this->input->post('type');
 			$item->display = $this->input->post('display');
 			$id = R::store($item);
 
-			redirect('AdminNew');
+			redirect('AdminLand');
 		}
 		else {
-			$categories = R::getAll( "SELECT id as code, title as name
-														FROM dcategories Order By disorder asc" );
+			$categories = R::getAll( "SELECT id as code, name as name, parent
+														FROM dlandcategories Order By disorder asc" );
 			$this->data["categories"] = $categories;
-			$this->data["view"] = array('admin/AdminNew_Add');
+			$this->data["view"] = array('admin/AdminLand_Add');
 			$this->load->view('.layout', $this->data);
 		}
 
@@ -107,35 +119,45 @@ class AdminNew extends MY_Controller {
 	public function update($id)
 	{
 		if($this->input->post('title') != null){
-			$item = R::load( 'dnews', $id);
+			$item = R::load( 'dlands', $id);
 
 			$filenameAvatar = $item->avatar;
       if(isset($_FILES['avatar']) && $_FILES['avatar']['size'] > 0) {
-          $output = $this->mu->do_upload_image ( 'avatar', 'av', FILE_IMAGE_PATH_NEWS );
+          $output = $this->mu->do_upload_image ( 'avatar', 'av', FILE_IMAGE_PATH_LANDS );
           $filenameAvatar = $output["data"];
       }
 
 			$item->avatar = $filenameAvatar;
+
 			$item->title = $this->input->post('title');
 			$item->link_name = $this->input->post('link_name');
-			$item->source = $this->input->post('source');
-			$item->author = $this->input->post('author');
+			$item->description = $this->input->post('description');
+			$item->price = $this->mu->getDataMoney($this->input->post('price'));
+			$item->address = $this->input->post('address');
+			$item->contacter = $this->input->post('contacter');
+			$item->phone = $this->input->post('phone');
+			$item->public_from = $this->mu->changeDateTimeFormat($this->input->post('public_from'));
+			$item->public_to = $this->mu->changeDateTimeFormat($this->input->post('public_to'));
+			$item->width = $this->input->post('width');
+			$item->long = $this->input->post('long');
+			$item->livesize = $this->input->post('livesize');
+			$item->mapx = $this->input->post('mapx');
+			$item->mapy = $this->input->post('mapy');
+			$item->type = $this->input->post('type');
 			$item->display = $this->input->post('display');
-			$item->cat_id = $this->input->post('cat_id');
-			$item->content = $this->input->post('content');
 			$id = R::store($item);
 
-			redirect("AdminNew");
+			redirect("AdminLand");
 		}
 		else{
-			$categories = R::getAll( "SELECT id as code, title as name
-														FROM dcategories Order By disorder asc" );
+			$categories = R::getAll( "SELECT id as code, name as name, parent
+														FROM dlandcategories Order By disorder asc" );
 			$this->data["categories"] = $categories;
 
-			$item = R::findOne('dnews','id=?',[$id]);
+			$item = R::findOne('dlands','id=?',[$id]);
 			$this->form_data = $item;
 			$this->data['data'] = $this->form_data;
-			$this->data['view'] = array("admin/AdminNew_Add");
+			$this->data['view'] = array("admin/AdminLand_Add");
 			$this->load->view('.layout', $this->data);
 		}
 
@@ -143,9 +165,9 @@ class AdminNew extends MY_Controller {
 
 	public function delete($id)
 	{
-		$item = R::load('dnews', $id);
+		$item = R::load('dlands', $id);
 		R::trash($item);
-		redirect('AdminNew');
+		redirect('AdminLand');
 	}
 
 }

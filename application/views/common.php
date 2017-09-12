@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/layout.css" />
 <link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/mobile.css" />
 <link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/desktop.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
 <!-- DataTables -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
 <script src="<?=base_url()?>assets/js/tether.min.js"></script>
@@ -13,3 +14,4 @@
 <script src="<?=base_url()?>assets/js/common.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<?php $this->mu->jsInclude("select2"); ?>

@@ -13,3 +13,12 @@ CKEDITOR.config.removePlugins = "elementspath";
 CKEDITOR.config.language = "vi";
 CKEDITOR.config.resize_enabled = true;
 CKEDITOR.config.extraPlugins = 'uploadimage';
+CKEDITOR.config.toolbarGroups = [
+	{ name: 'links', groups: [ 'links' ] },
+	{ name: 'insert', groups: [ 'insert' ] },
+	{ name: 'tools', groups: [ 'tools', 'blocks','list','colors' ] },
+	{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+	{ name: 'others', groups: [ 'others' ] },
+	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup','indent' ] },
+	{ name: 'paragraph', groups: [ 'align', 'paragraph','styles' ] }
+];

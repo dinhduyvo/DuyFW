@@ -28,8 +28,16 @@ class Mu {
         return $username;
     }
 
-    function formatMoney($value){
-      return number_format($value, 0, ",", ".");
+    function formatMoney($value, $tiente = false, $donvi="", $thapphan=0){
+      $valueDv = "";
+      if($donvi == "trieu"){
+        if($value % 1000000 == 0){
+          $thapphan = 0;
+        }
+        $value = $value/1000000;
+        $valueDv = "tr";
+      }
+      return number_format($value, $thapphan, ",", ".").$valueDv.($tiente?" đ":"");
     }
 
     function formatNumber($value){
@@ -441,8 +449,8 @@ class Mu {
         case 'maskmoney':
           echo '<script src="'.base_url().'assets/plugins/mask-money/jquery.maskMoney.js" type="text/javascript"></script>';
           break;
-        case 'selectmultiple':
-          echo '<link rel="stylesheet" href="'.base_url().'res/plugins/select2/select2.min.css">
+        case 'select2':
+          echo '<link rel="stylesheet" href="'.base_url().'assets/plugins/select2/select2.min.css">
                 <script src="'.base_url().'assets/plugins/select2/select2.full.min.js"></script>';
           break;
         case 'inputmask':
@@ -738,5 +746,10 @@ class Mu {
         return substr($value, 0, $length)."...";
       }
 
+    }
+
+    public function getDataMoney($value='')
+    {
+      return str_replace('.','',$value);
     }
 }

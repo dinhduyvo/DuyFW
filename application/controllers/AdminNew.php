@@ -94,7 +94,7 @@ class AdminNew extends MY_Controller {
 			redirect('AdminNew');
 		}
 		else {
-			$categories = R::getAll( "SELECT id as code, title as name
+			$categories = R::getAll( "SELECT id as code, title as name, parent
 														FROM dcategories Order By disorder asc" );
 			$this->data["categories"] = $categories;
 			$this->data["view"] = array('admin/AdminNew_Add');
@@ -128,7 +128,7 @@ class AdminNew extends MY_Controller {
 			redirect("AdminNew");
 		}
 		else{
-			$categories = R::getAll( "SELECT id as code, title as name
+			$categories = R::getAll( "SELECT id as code, title as name, parent
 														FROM dcategories Order By disorder asc" );
 			$this->data["categories"] = $categories;
 

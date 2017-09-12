@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
   		<h4 class="panel-title">
-  			<span><span class="glyphicon glyphicon-modal-window text-warning"></span> Quản lý Tin tức</span>
+  			<span><span class="glyphicon glyphicon-modal-window text-warning"></span> <?php echo $title; ?> </span>
   		</h4>
   	</div>
     <div id="collapseOne" class="panel-collapse"
@@ -10,9 +10,9 @@
   		<div class="panel-body">
         <?php
 
-        $header = array ("Tiêu đề","Ngày đăng", "Người đăng");
+        $header = array ("Tiêu đề","Địa chỉ","Phone","Giá","Ngày đăng", "Người đăng");
 
-        echo $this->mt->createNormalTable($header, $datas,"AdminNew", true, true, true, "Cập nhật", "capnhat","edit", "AdminNew/doAdd","AdminNew");
+        echo $this->mt->createNormalTable($header, $datas,"AdminLand", true, true, true, "Cập nhật", "capnhat","edit", "AdminLand/doAdd","AdminLand");
 
         echo $this->mt->setDataTableJS("tbData");
 

@@ -29,18 +29,18 @@
         <div class="col-md-8">
           <?php echo $this->mf->openForm("", "rightform");?>
           <?php echo $this->mf->createTextBox(
-        				        'title',
-        				        isset($data)&&(!$isposted)?$data->title:set_value('name'),
+        				        'name',
+        				        isset($data)&&(!$isposted)?$data->name:set_value('name'),
         				        'Tên danh mục',
         				        true,
         				        true,
         				        '',
         								100)?>
           <div class="col-md-3"></div>
-          <div class="col-md-9"><span class="glyphicon glyphicon-arrow-down" id="ConvertLinkName"></span></div>
+          <div class="col-md-9"><span class="glyphicon glyphicon-arrow-down" id="ConvertLinkName2"></span></div>
           <?php echo $this->mf->createTextBox(
         				        'link_name',
-        				        isset($data)&&(!$isposted)?$data->link_name:set_value('name'),
+        				        isset($data)&&(!$isposted)?$data->link_name:set_value('link_name'),
         				        'Friendly URL',
         				        true,
         				        true,
@@ -108,8 +108,6 @@ $(document).ready(function() {
       $("#staticdiv").attr('style', 'display:none');
     }
   });
-  $("#ConvertLinkName").click(function(event) {
-    $("#link_name").val(ConvertLinkName($("#title").val()));
-  });
+
 });
 </script>

@@ -48,3 +48,14 @@ $(document).ready(function() {
     $("#link_name").val(ConvertLinkName($("#name").val()));
   });
 });
+
+$(document).on('mouseenter', ".iffyTip", function () {
+  var $this = $(this);
+  if (this.offsetWidth < this.scrollWidth && !$this.attr('title')) {
+      $this.tooltip({
+          title: $this.text(),
+          placement: "bottom"
+      });
+      $this.tooltip('show');
+  }
+});

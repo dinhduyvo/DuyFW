@@ -114,6 +114,8 @@ define("FILE_IMAGE_PATH_JOBS", FCPATH."/".FILE_IMAGE_URL."/jobs");
 define("FILE_IMAGE_URL_JOBS", "upload/imgs/jobs");
 define("FILE_IMAGE_PATH_COMPANIES", FCPATH."/".FILE_IMAGE_URL."/coms");
 define("FILE_IMAGE_URL_COMPANIES", "upload/imgs/coms");
+define("FILE_IMAGE_PATH_LANDS", FCPATH."/".FILE_IMAGE_URL."/lands");
+define("FILE_IMAGE_URL_LANDS", "upload/imgs/lands");
 define("FILE_IMAGE_EXTENTION", 'png|gif|jpg|PNG');
 define("FILE_IMAGE_EXTENTION_JS", '["jpg","png"]');
 define("FILE_IMAGE_MAX_WIDTH", 3000);

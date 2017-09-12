@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <span class="l l4"></span>
               <span class="l l5"></span>
           </div>
-					MekongBox.vn   </a>
+					CanthoBox.vn   </a>
 			</div>
 			<nav class="collapse navbar-collapse" id="navbar-collapse-menu">
 				<ul class="nav navbar-nav navbar-left">
