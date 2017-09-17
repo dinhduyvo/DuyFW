@@ -96,6 +96,11 @@ define('DISPLAY_TYPES', array(
             array("name" => "Hiển thị", "code"=>"1"),
             array("name" => "Ẩn", "code"=>"0")
           ));
+define('DISPLAY_TYPES_NOIBATS', array(
+            array("name" => "Hiển thị", "code"=>"1"),
+            array("name" => "Ẩn", "code"=>"0"),
+            array("name" => "Nổi bật", "code"=>"2")
+    ));
 define('DISPLAY_TYPES_NEWS', array(
             array("name" => "Hiển thị", "code"=>"1"),
             array("name" => "Ẩn", "code"=>"0"),

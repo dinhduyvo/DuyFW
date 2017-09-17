@@ -8,6 +8,7 @@
   }
   .navbar-default .navbar-nav>li>a .toplink:hover {
     font-weight: bold;
+    color: yellowgreen;
   }
 
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -23,12 +24,5 @@
   .card-title{
   }
 
-  .dropdown-menu > li > a {
-    padding: 7px 20px;
-  }
 
-  .dropdown-menu > li > a:hover {
-    background: #AFCCBA;
-    font-weight: bold;
-  }
 }

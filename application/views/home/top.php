@@ -80,7 +80,7 @@
           <div class="panel-heading" role="tab" id="headingOne">
         		<h4 class="panel-title">
         			<span class="glyphicon glyphicon-star-empty"></span> Tuyển dụng
-              <a class="btn btn-default btn-detail" href=""><i class="fa fa-cloud-download"></i> Xem tất cả</a>
+              <a class="btn btn-default btn-detail" href="<?php echo site_url('tuyendung') ?>"><i class="fa fa-cloud-download"></i> Xem tất cả</a>
         		</h4>
         	</div>
           <div id="collapseJob" class="panel-collapse"

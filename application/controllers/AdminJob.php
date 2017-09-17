@@ -97,6 +97,7 @@ class AdminJob extends MY_Controller {
 			$item->language = $this->mu->arrayToString($this->input->post('language'),"|");
 			$item->company_id = $this->input->post('company_id');
 			$item->career_id = $this->input->post('career_id');
+			$item->location_id = $this->input->post('location_id');
 			if($this->input->post('display') == "1"){
 				$item->public_date = date('Y-m-d G:i:s');
 			}
@@ -109,9 +110,14 @@ class AdminJob extends MY_Controller {
 			$careers = R::getAll( "SELECT id as code, name as name
 														FROM dcareers Order By disorder asc" );
 			$this->data["careers"] = $careers;
+
 			$companies = R::getAll( "SELECT id as code, name as name
 														FROM dcompanies Order By name asc" );
 			$this->data["companies"] = $companies;
+
+			$locations = R::getAll( "SELECT id as code, name as name
+														FROM dlocations Order By name asc" );
+			$this->data["locations"] = $locations;
 			$this->data["view"] = array('admin/AdminJob_Add');
 			$this->load->view('.layout', $this->data);
 		}
@@ -125,10 +131,10 @@ class AdminJob extends MY_Controller {
 			$item = R::load( 'djobs', $id);
 
 			$filenameAvatar = "";
-      if(isset($_FILES['avatar']) && $_FILES['avatar']['size'] > 0) {
-          $output = $this->mu->do_upload_image ( 'avatar', 'av', FILE_IMAGE_PATH_JOBS );
-          $filenameAvatar = $output["data"];
-      }
+			if(isset($_FILES['avatar']) && $_FILES['avatar']['size'] > 0) {
+				$output = $this->mu->do_upload_image ( 'avatar', 'av', FILE_IMAGE_PATH_JOBS );
+				$filenameAvatar = $output["data"];
+			}
 			else {
 				$filenameAvatar = $item->avatar;
 			}
@@ -148,6 +154,7 @@ class AdminJob extends MY_Controller {
 			$item->language = $this->mu->arrayToString($this->input->post('language'),"|");
 			$item->company_id = $this->input->post('company_id');
 			$item->career_id = $this->input->post('career_id');
+			$item->location_id = $this->input->post('location_id');
 			if($this->input->post('display') == "1"){
 				$item->public_date = date('Y-m-d G:i:s');
 			}
@@ -163,6 +170,9 @@ class AdminJob extends MY_Controller {
 			$companies = R::getAll( "SELECT id as code, name as name
 														FROM dcompanies Order By name asc" );
 			$this->data["companies"] = $companies;
+
+			$locations = R::getAll( "SELECT id as code, name as name FROM dlocations Order By name asc" );
+			$this->data["locations"] = $locations;
 
 			$item = R::findOne('djobs','id=?',[$id]);
 			$this->form_data = $item;

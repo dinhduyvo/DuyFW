@@ -64,14 +64,16 @@ class Auth extends MY_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('Home', 'refresh');
+				//redirect('Home', 'refresh');
+				echo "1";
 			}
 			else
 			{
 				// if the login was un-successful
 				// redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+				echo "Email hoặc mật khẩu không khớp";
+				//redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -89,8 +91,8 @@ class Auth extends MY_Controller {
 				'id'   => 'password',
 				'type' => 'password',
 			);
-
-			$this->_render_page('auth/login', $this->data);
+			echo "Dữ liệu không hợp lệ!";
+			//$this->_render_page('auth/login', $this->data);
 		}
 	}
 
@@ -104,7 +106,7 @@ class Auth extends MY_Controller {
 
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		redirect('', 'refresh');
 	}
 
 	// change password

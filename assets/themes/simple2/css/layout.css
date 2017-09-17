@@ -67,16 +67,16 @@ hr {
 }
 
 .navbar-default .navbar-nav>li>a {
+  color: #EDE3C0;
   font-size: 13px;
   text-align: center;
-	border-color: #ccc;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-  color: #4E7D46;
+  color: #EDE3C0;
   font-size: 13px;
-	background: #DDEBDA;
-	border-color: #ccc;
+  text-align: center;
+	background: #ccc;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -278,23 +278,14 @@ div.row>a>.img-responsive {
     box-shadow: 0 0 1px 0px rgba(172,181,194,0.56) !important;
 }
 
+.media {
+    padding-bottom: 5px;
+    border-bottom: dotted 1px #ccc;
+}
+
 .carousel-caption {
 		right: 0%;
 		left: 0%;
 		bottom: 0px;
 		padding-bottom: 5px;
 }
-
-.modal-header {
-	padding: 9px 15px;
-	background-color: #afccba;
-	-webkit-border-top-left-radius: 6px;
-	-webkit-border-top-right-radius: 6px;
-	-moz-border-radius-topleft: 6px;
-	-moz-border-radius-topright: 6px;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
-  }
-  .modal-footer {
-	padding: 9px 15px;
-  }

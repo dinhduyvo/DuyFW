@@ -1,8 +1,3 @@
-<?php $this->mu->jsInclude("ckeditor");?>
-<?php $this->mu->jsInclude("fileinput"); ?>
-<script>
-        CKEDITOR.config.filebrowserUploadUrl = '<?=site_url("Home/upload")?>';
-</script>
 <div class="panel-group" role="tablist">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
@@ -16,7 +11,7 @@
         <div class="col-md-4">
           <?php echo $this->mf->openForm("", "leftform");?>
           <?php $buttons = array(
-                              array('id' => 'btnAdd', 'url' => site_url('AdminCompany'),'type' => 'success', 'icon' => 'plus'),
+                              array('id' => 'btnAdd', 'url' => site_url('AdminJobCareer'),'type' => 'success', 'icon' => 'plus'),
                               array('id' => 'btnEdit', 'url' => '#','type' => 'warning', 'icon' => 'edit'),
                               array('id' => 'btnDelete', 'url' => '#','type' => 'danger', 'icon' => 'remove')
                             );
@@ -45,20 +40,15 @@
         				        true,
         				        '',
         								50)?>
-          <?php echo $this->mf->createImageUpload(
-        				        'avatar',
-        				        'Hình ảnh đại diện (nếu có)',
+          <?php echo $this->mf->createRadio("Hiển thị","display", DISPLAY_TYPES, isset($data)&&(!$isposted)?$data->display:set_value('display'),  true, true);?>
+          <?php echo $this->mf->createTextBox(
+        				        'icon',
+        				        isset($data)&&(!$isposted)?$data->icon:set_value('icon'),
+        				        'Icon',
         				        false,
         				        true,
-        				        'Chọn file',
-        				        isset($data)&&(!$isposted)?$data->avatar:'',FILE_IMAGE_URL_COMPANIES); ?>
-          <?php echo $this->mf->createRadio("Hiển thị","display", DISPLAY_TYPES_NOIBATS, isset($data)&&(!$isposted)?$data->display:set_value('display'),  true, true);?>
-          <?php echo $this->mf->createEditor(
-        				        'description',
-        				        isset($data)&&(!$isposted)?$data->description:set_value('description'),
-        				        'Mô tả',
-        				        true,
-        				        true);?>
+        				        '',
+        								100)?>
           <?php echo $this->mf->createHidden("id", isset($data)?$data->id:"0")?>
           <?php echo $this->mf->createButtons("reset")?>
 
@@ -73,16 +63,6 @@ $(document).ready(function() {
 
   $("#datas").dblclick(function(event) {
     $("#pageaction").val("");
-    $('#leftform').submit();
-  });
-
-  $("#btnUp").click(function(event) {
-    $("#pageaction").val("up");
-    $('#leftform').submit();
-  });
-
-  $("#btnDown").click(function(event) {
-    $("#pageaction").val("down");
     $('#leftform').submit();
   });
 
@@ -112,7 +92,7 @@ $(document).ready(function() {
     }
   });
   $("#ConvertLinkName").click(function(event) {
-    $("#link_name").val(ConvertLinkName($("#title").val()));
+    $("#link_name").val(ConvertLinkName($("#name").val()));
   });
 });
 </script>

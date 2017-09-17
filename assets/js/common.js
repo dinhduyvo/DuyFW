@@ -1,3 +1,5 @@
+angular.module('canthobox.main', []);
+
 function confirmDelete(func) {
   $.confirm({
       theme: 'material',
@@ -23,9 +25,11 @@ function confirm2(){
   return (confirm("Bạn có chắc?"));
 }
 
-function ConvertLinkName($input) {
-  $output = bodauTiengViet($input);
-  return $output.replace(/ /g,'-');
+function ConvertLinkName(input) {
+  output = bodauTiengViet(input);
+  output = output.replace(/-/g,' ');
+  output = output.replace(/ +/g,' ');
+  return output.replace(/ /g,'-');
 }
 
 function bodauTiengViet(str) {
