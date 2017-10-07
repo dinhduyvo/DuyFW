@@ -72,7 +72,7 @@
 				        array(isset($data)&&(!$isposted)?$data->salary_from:set_value('salary_from'),
 				                isset($data)&&(!$isposted)?$data->salary_to:set_value('salary_to')),
 				        array('Từ', 'Đến'),
-				        array(true, true),
+				        array(false, false),
 				        array(true, true),
 				        array('', ''),
 				        array('',''),
@@ -82,6 +82,7 @@
         <?php echo $this->mf->createSelectFull("career_id", $careers,  isset($data)&&(!$isposted)?$data->career_id:set_value('career_id'), "Danh mục", "--- Chọn nghề ---", true); ?>
         <?php echo $this->mf->createSelectFull("company_id", $companies,  isset($data)&&(!$isposted)?$data->company_id:set_value('company_id'), "Công ty", "--- Chọn công ty ---", true); ?>
         <?php echo $this->mf->createSelectFull("location_id", $locations,  isset($data)&&(!$isposted)?$data->location_id:set_value('location_id'), "Địa điểm", "--- Chọn địa điểm ---", true); ?>
+        <?php echo $this->mf->createSelectFull("education", EDUCATION_LIST,  isset($data)&&(!$isposted)?$data->education:set_value('education'), "Học vấn tối thiểu", "--- Chọn học vấn ---", true); ?>
         <?php echo $this->mf->createSelectMultipleFull("language", LANGUAGE_LIST,  isset($data)&&(!$isposted)?$this->mu->stringToArray($data->language):set_value('language'), "Ngôn ngữ", "Chọn ngôn ngữ"); ?>
         <?php echo $this->mf->createEditor(
       				        'description',

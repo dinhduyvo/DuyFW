@@ -94,6 +94,7 @@ class AdminJob extends MY_Controller {
 			$item->requirement = $this->input->post('requirement');
 			$item->benefit = $this->input->post('benefit');
 			$item->position = $this->input->post('position');
+			$item->education = $this->input->post('education');
 			$item->language = $this->mu->arrayToString($this->input->post('language'),"|");
 			$item->company_id = $this->input->post('company_id');
 			$item->career_id = $this->input->post('career_id');
@@ -151,6 +152,7 @@ class AdminJob extends MY_Controller {
 			$item->requirement = $this->input->post('requirement');
 			$item->benefit = $this->input->post('benefit');
 			$item->position = $this->input->post('position');
+			$item->education = $this->input->post('education');
 			$item->language = $this->mu->arrayToString($this->input->post('language'),"|");
 			$item->company_id = $this->input->post('company_id');
 			$item->career_id = $this->input->post('career_id');

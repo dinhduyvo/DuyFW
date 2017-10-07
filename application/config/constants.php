@@ -84,7 +84,7 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-define('DUYTEMPLATE','themes/simple/');
+define('DUYTEMPLATE','themes/new/');
 define("DATE_INSERT_FORMAT", "%Y-%m-%d %H:%i:%s");
 
 define('PAGE_TYPES', array(
@@ -110,6 +110,16 @@ define('LANGUAGE_LIST', array(
             array("name" => "English", "code"=>"en"),
             array("name" => "Japanese", "code"=>"jp"),
             array("name" => "France", "code"=>"fr")
+    ));
+define('EDUCATION_LIST', array(
+            array("name" => "Không yêu cầu", "code"=>"0"),
+            array("name" => "Đại học", "code"=>"1"),
+            array("name" => "Sau đại học", "code"=>"2"),
+            array("name" => "Cao đẳng", "code"=>"3"),
+            array("name" => "Trung cấp", "code"=>"4"),
+            array("name" => "Trung học Phổ thông", "code"=>"5"),
+            array("name" => "Trung học Cấp II", "code"=>"6"),
+            array("name" => "Tiểu học", "code"=>"7"),
     ));
 define("FILE_IMAGE_MAX_SIZE", 1000);
 define("FILE_IMAGE_URL", "upload/imgs");

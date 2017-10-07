@@ -46,6 +46,7 @@
       				        true,
       				        '',
       								100)?>
+        <?php echo $this->mf->createSelectFull("location_id", $locations,  isset($data)&&(!$isposted)?$data->location_id:set_value('location_id'), "Địa điểm", "--- Chọn địa điểm ---", true); ?>
         <?php echo $this->mf->createImageUpload(
       				        'avatar',
       				        'Hình ảnh đại diện (nếu có)',

@@ -38,124 +38,121 @@
       <!-- Carousel end -->
 
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="panel-group" role="tablist">
-            <div class="panel panel-success">
-              <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                  <span class="glyphicon glyphicon-star-empty"></span> Tin nổi bật
-                  <a class="btn btn-default btn-detail" href=""><i class="fa fa-cloud-download"></i> Xem tất cả</a>
-                </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse"
-                role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                  <?php
-                  foreach ($news as $item) {
-                    ?>
-                    <div class="media">
-                      <a class="pull-left" href="#">
-                        <img class="media-object img-responsive img-thumbnail" src="<?php echo base_url().FILE_IMAGE_URL_NEWS.'/'.$item->avatar; ?>" style="width:150px" alt="Image">
-                      </a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="<?php echo site_url('tin_tuc/i/'.$item->id.'/'.$item->link_name) ?>"><?php echo $item->title;?></a></h4>
-                        <p><?php echo $this->mu->cutString($item->content, 150); ?> <cite><?php echo $this->mu->showVNDate($item->public_date); ?></cite></p>
-                      </div>
-                    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 itemListSmall">
+          <?php
+          foreach ($news as $item) {
+            ?>
+          <div class="panel panel-default panel-news needhover">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-5">
+                  <img class="card-img-top img-responsive img-thumbnail" src="<?php echo base_url().FILE_IMAGE_URL_NEWS.'/'.$item->avatar; ?> ?>" style="width: 100%; height: 150px" alt="Card image cap">
+                </div>
+                <div class="col-md-7 top-td-center">
+                  <div class="item_title_news"><a href="<?php echo site_url('tin_tuc/i/'.$item->id.'/'.$item->link_name) ?>"><?php echo $item->title;?></a></a>
                     <?php
-                  }
-                  ?>
+          					if ($this->ion_auth->is_admin())
+          					{
+          					 ?>
+                     <a href="<?php echo site_url('AdminNew/update/'.$item['id']) ?>"><span class="fa fa-edit" aria-hidden="true"></span></a>
+                   <?php } ?>
+                 </div>
+                   <div class="item_cat">
+                     <p><?php echo $this->mu->cutString($item->content, 150); ?></p>
+                   </div>
+                   <div class="item_date"><i class="fa fa-calendar" aria-hidden="true"></i> Ngày đăng: <?php echo $this->mu->showVNDate($item->public_date) ?></div>
                 </div>
               </div>
+
             </div>
           </div>
+        <?php } ?>
         </div>
       </div>
 
 
     </div>
     <div class="col-md-3 top-td-center">
-      <div class="panel-group" role="tablist">
-        <div class="panel panel-success">
-          <div class="panel-heading" role="tab" id="headingOne">
-        		<h4 class="panel-title">
-        			<span class="glyphicon glyphicon-star-empty"></span> Tuyển dụng
-              <a class="btn btn-default btn-detail" href="<?php echo site_url('tuyendung') ?>"><i class="fa fa-cloud-download"></i> Xem tất cả</a>
-        		</h4>
-        	</div>
-          <div id="collapseJob" class="panel-collapse"
-        		role="tabpanel" aria-labelledby="headingOne">
-        		<div class="panel-body">
-              <?php
-              foreach ($jobs as $item) {
-                ?>
-                <div class="card">
-                  <img class="card-img-top img-responsive img-thumbnail" src="<?php echo base_url().FILE_IMAGE_URL_JOBS."/".$item["avatar"]; ?>" style="width: 100%; height: 150px" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title text-danger"><b><?php echo $item["title"];?></b></h5>
-                    <p class="card-text"></p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item list-group-item-info"><?php echo $item["name"];?></li>
-                    <li class="list-group-item">
-                    <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
-                     <?php echo $this->mu->formatMoney($item["salary_from"], false, "trieu",1)." - ".$this->mu->formatMoney($item["salary_to"], true,"trieu",1);?>
-                     <div class="text-right" style="float:right">
-                        <span class="text-muted"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-                        <?php echo $this->mu->showVNDate($item['end_date']); ?></div>
-                    </li>
-                  </ul>
-                </div>
+      <div class="list-group">
+        <li class="list-group-item list-group-item-info">
+          <b><i class="fa fa-feed" aria-hidden="true"></i> Tuyển dụng</b>
+          <a class="btn btn-default btn-detail" href="<?php echo site_url('tuyendung') ?>"><i class="fa fa-cloud-download"></i> Xem tất cả</a>
+        </li>
+
+
+          <?php
+          foreach ($jobs as $item) {
+            ?>
+            <li class="list-group-item itemListSmall needhover">
+              <img class="card-img-top img-responsive img-thumbnail" src="<?php echo base_url().($item["avatar"]!=''?FILE_IMAGE_URL_JOBS."/".$item["avatar"]:FILE_IMAGE_URL_COMPANIES."/".$item["avatar2"]); ?>" style="width: 100%; height: 150px; margin-bottom: 10px;" alt="Card image cap">
+              <div class="item_title"><a href="<?php echo site_url('tuyendung/chitiet/'.$item['id'].'/'.$item['link_name']) ?>"><?php echo $item["title"] ?></a>
                 <?php
-              }
-               ?>
-            </div>
-          </div>
-        </div>
+                if ($this->ion_auth->is_admin())
+                {
+                 ?>
+                 <a href="<?php echo site_url('AdminJob/update/'.$item['id']) ?>"><span class="fa fa-edit" aria-hidden="true"></span></a>
+               <?php } ?>
+             </div>
+               <div class="item_cat">
+                 <a href="<?php echo site_url('tuyendung/chitiet/'.$item['id'].'/'.$item['link_name']) ?>"><?php echo $item["comname"] ?></a>
+               </div>
+               <div class="item_location">
+                 <i class="fa fa-map-marker fa-fw"></i> <?php echo $item['locationname'] ?>
+
+               </div>
+               <div class="item_date"><i class="fa fa-calendar" aria-hidden="true"></i> Hạn cuối: <?php echo $this->mu->showVNDate($item['end_date']) ?></div>
+               <div class="item_money">
+                 <?php echo $this->mu->showSalary($item['salary_from'], $item['salary_to']) ?>
+               </div>
+            </li>
+            <?php
+          }
+           ?>
+
       </div>
     </div>
     <div class="col-md-3 top-td-center">
-      <div class="panel-group" role="tablist">
-        <div class="panel panel-success">
-          <div class="panel-heading" role="tab" id="headingOne">
-        		<h4 class="panel-title">
-        			<span class="glyphicon glyphicon-star-empty"></span> Bất động sản
-              <a class="btn btn-default btn-detail" href=""><i class="fa fa-cloud-download"></i> Xem tất cả</a>
-        		</h4>
-        	</div>
-          <div id="collapseOne" class="panel-collapse"
-        		role="tabpanel" aria-labelledby="headingOne">
-        		<div class="panel-body">
-              <?php
-              foreach ($lands as $item) {
-                ?>
-                <div class="card">
-                  <img class="card-img-top img-responsive img-thumbnail" src="<?php echo base_url().FILE_IMAGE_URL_LANDS."/".$item["avatar"]; ?>" style="width: 100%; height: 150px" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title text-danger iffyTip"><b><?php echo $this->mu->cutString($item["title"],200);?></b></h5>
-                    <p class="card-text"></p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                      <span class="text-muted"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></span>
-                      <?php echo $this->mu->formatMoney($item["price"], true);?>
-                    </li>
-                    <li class="list-group-item">
-                      <span class="text-muted"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span></span>
-                      <?php echo ($item["width"]/1).' x '.($item['long']/1);?> m<sup>2</sup>
-                      <div class="text-right" style="float:right">
-                        <span class="text-muted"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-                        <?php echo $this->mu->showVNDate($item['public_to']); ?></div>
-                    </li>
-                  </ul>
-                </div>
+      <div class="list-group">
+        <li class="list-group-item list-group-item-info">
+          <b><i class="fa fa-feed" aria-hidden="true"></i> Bất động sản</b>
+          <a class="btn btn-default btn-detail" href="<?php echo site_url('tuyendung') ?>"><i class="fa fa-cloud-download"></i> Xem tất cả</a>
+        </li>
+
+
+          <?php
+          foreach ($lands as $item) {
+            ?>
+            <li class="list-group-item itemListSmall needhover">
+              <img class="card-img-top img-responsive img-thumbnail" src="<?php echo base_url().FILE_IMAGE_URL_LANDS."/".$item["avatar"]; ?>" style="width: 100%; height: 150px; margin-bottom: 10px;" alt="Card image cap">
+              <div class="item_title iffyTip"><a href="<?php echo site_url('tuyendung/chitiet/'.$item['id'].'/'.$item['link_name']) ?>"><?php echo $item["title"] ?></a>
                 <?php
-              }
-               ?>
-            </div>
-          </div>
-        </div>
+                if ($this->ion_auth->is_admin())
+                {
+                 ?>
+                 <a href="<?php echo site_url('AdminJob/update/'.$item['id']) ?>"><span class="fa fa-edit" aria-hidden="true"></span></a>
+               <?php } ?>
+             </div>
+               <div class="item_cat">
+                 <span class="text-muted"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span></span>
+                 <?php echo ($item["width"]/1).' x '.($item['long']/1);?> m<sup>2</sup>
+               </div>
+               <div class="item_location">
+                 <i class="fa fa-map-marker fa-fw"></i> <?php echo $item['locationname'] ?>
+
+               </div>
+               <div class="item_date"><i class="fa fa-calendar" aria-hidden="true"></i> Hạn cuối:   <?php echo $this->mu->showVNDate($item['public_to']); ?></div>
+               <div class="item_money">
+                 <span class="text-muted"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></span>
+                 <?php echo $this->mu->formatMoney($item["price"], true);?>
+               </div>
+            </li>
+            <?php
+          }
+           ?>
+
       </div>
+
+
     </div>
   </div>
 

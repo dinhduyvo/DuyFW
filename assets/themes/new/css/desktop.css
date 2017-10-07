@@ -1,0 +1,22 @@
+@media (min-width: 768px) {
+  .container.main {
+    margin-top: 5px !important;
+  }
+  .top-td-center {
+    padding-left: 5px;
+  }
+
+  .dropdown-menu > li > a {
+    padding: 7px 20px;
+  }
+
+  .dropdown-menu > li > a:hover {
+    background: #AFCCBA;
+    font-weight: bold;
+  }
+
+  .itemlist .item_date {
+    float: right;
+    text-align: right;
+  }
+}

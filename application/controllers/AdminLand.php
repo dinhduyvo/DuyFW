@@ -101,6 +101,7 @@ class AdminLand extends MY_Controller {
 			$item->mapy = $this->input->post('mapy');
 			$item->type = $this->input->post('type');
 			$item->display = $this->input->post('display');
+			$item->location_id = $this->input->post('location_id');
 			$id = R::store($item);
 
 			redirect('AdminLand');
@@ -109,6 +110,11 @@ class AdminLand extends MY_Controller {
 			$categories = R::getAll( "SELECT id as code, name as name, parent
 														FROM dlandcategories Order By disorder asc" );
 			$this->data["categories"] = $categories;
+
+			$locations = R::getAll( "SELECT id as code, name as name
+														FROM dlocations Order By name asc" );
+			$this->data["locations"] = $locations;
+
 			$this->data["view"] = array('admin/AdminLand_Add');
 			$this->load->view('.layout', $this->data);
 		}
@@ -145,6 +151,7 @@ class AdminLand extends MY_Controller {
 			$item->mapy = $this->input->post('mapy');
 			$item->type = $this->input->post('type');
 			$item->display = $this->input->post('display');
+			$item->location_id = $this->input->post('location_id');
 			$id = R::store($item);
 
 			redirect("AdminLand");
@@ -153,6 +160,10 @@ class AdminLand extends MY_Controller {
 			$categories = R::getAll( "SELECT id as code, name as name, parent
 														FROM dlandcategories Order By disorder asc" );
 			$this->data["categories"] = $categories;
+
+			$locations = R::getAll( "SELECT id as code, name as name
+														FROM dlocations Order By name asc" );
+			$this->data["locations"] = $locations;
 
 			$item = R::findOne('dlands','id=?',[$id]);
 			$this->form_data = $item;

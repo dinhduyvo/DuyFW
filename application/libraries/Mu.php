@@ -752,4 +752,40 @@ class Mu {
     {
       return str_replace('.','',$value);
     }
+
+    public function showSalary($from, $to)
+    {
+      echo '<i class="fa fa-dollar fa-fw"></i> ';
+      if($from == 0 && $to == 0) {
+        echo 'Thương lượng';
+      }
+      elseif ($from == 0 && $to > 0) {
+        echo "~ ".$this->formatMoney($to);
+      }
+      elseif ($from > 0 && $to == 0) {
+        echo $this->formatMoney($from)." ~ ";
+      }
+      else {
+        echo $this->formatMoney($to)." ~ ".$this->formatMoney($to);
+      }
+
+    }
+
+    public function showDataFromArray($values='', $arrayData)
+    {
+      $datas = explode("|", $values);
+      $returnStr = "";
+
+      $start = true;
+      foreach ($datas as $item) {
+        foreach ($arrayData as $item2) {
+          if ($item == $item2["code"]) {
+            $returnStr .= (!$start?", ":"").$item2["name"];
+          }
+        }
+        $start = false;
+      }
+
+      return $returnStr;
+    }
 }

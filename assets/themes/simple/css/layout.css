@@ -85,7 +85,7 @@ hr {
 }
 
 .container.main {
-	margin-top: 5px;
+	margin-top: 0px;
 }
 
 #footer-navigation {
@@ -279,8 +279,8 @@ div.row>a>.img-responsive {
 }
 
 .carousel-caption {
-		right: 0%;
-		left: 0%;
+		right: 1px;
+		left: 1px;
 		bottom: 0px;
 		padding-bottom: 5px;
 }
@@ -298,3 +298,95 @@ div.row>a>.img-responsive {
   .modal-footer {
 	padding: 9px 15px;
   }
+
+	.itemlist .panel {
+		margin-bottom: 10px;
+	}
+
+	.itemlist .item_title {
+		font-size: 16px;
+    padding-bottom: 5px;
+	}
+	.itemlist .item_title a {
+		text-decoration: none;
+    color: #09a0db;
+		font-weight: bold;
+	}
+	.itemlist .item_cat {
+		font-size: 14px;
+    padding-bottom: 5px;
+	}
+	.itemlist .item_cat a {
+		text-decoration: none;
+    color: #505050;
+	}
+	.itemlist .item_location {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #777;
+	}
+	.itemlist .item_location a {
+		text-decoration: none;
+    color: #777;
+	}
+	.itemlist .item_money {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #CB4427;
+	}
+
+	.itemListSmall .item_title {
+		font-size: 13px;
+    padding-bottom: 5px;
+	}
+	.itemListSmall .item_title a {
+		text-decoration: none;
+    color: #09a0db;
+		font-weight: bold;
+	}
+	.itemListSmall .item_cat {
+		font-size: 13px;
+    padding-bottom: 5px;
+	}
+	.itemListSmall .item_cat a {
+		text-decoration: none;
+    color: #505050;
+	}
+	.itemListSmall .item_location {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #777;
+	}
+	.itemListSmall .item_location a {
+		text-decoration: none;
+    color: #777;
+	}
+	.itemListSmall .item_money {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #CB4427;
+	}
+
+	.itemListSmall .item_date {
+    padding-bottom: 5px;
+		color: #777;
+  }
+	.itemListSmall .item_title_news {
+		font: 700 14px arial;
+    color: #333;
+    position: relative;
+		margin-bottom: 5px;
+  }
+	.needhover:hover {
+		box-sizing: border-box;
+		-webkit-box-shadow: 0px 0px 12px 0px rgba(168,168,168,1);
+		-moz-box-shadow: 0px 0px 12px 0px rgba(168,168,168,1);
+		box-shadow: 0px 0px 12px 0px rgba(168,168,168,1);
+
+		border: dashed 2px #FFA500;
+	}
+
+	.panel-news {
+		border-left: solid 5px #AFCCBA;
+		background: #F2F7F4;
+	}

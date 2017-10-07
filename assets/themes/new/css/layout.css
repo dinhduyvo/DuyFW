@@ -1,0 +1,281 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400);
+
+html, body {
+	font-family: 'Open Sans', sans-serif !important;
+  font-size: 12px;
+	color: #111;
+	cursor: default;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: url('../images/wov.png') #fff;
+}
+
+body {
+	padding: 53px 0 0 0
+}
+
+header {
+	width: 100%;
+	background-color: rgba(248, 248, 248, 0.92);
+	border: none;
+	border-bottom: thin solid rgba(248, 248, 248, 0.3)
+}
+
+hr {
+	clear: both;
+	width: 100%;
+	height: 1px;
+	border: none;
+	margin: 15px auto 10px auto;
+	background-color: #dfdfdf
+}
+
+
+#footer-navigation {
+	margin: 1em;
+}
+
+.box {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	border: 0;
+	background: #eee;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 15px;
+	border-radius: 5px;
+	border: solid 1px #ccc;
+}
+
+.title {
+	background-size: cover;
+	border-bottom: 1px solid #e7e7e7;
+	margin: 5px 0 0 0;
+}
+
+.error {
+	padding: 10px;
+}
+
+.languages td, .languages th {
+	text-align: center;
+	align: center;
+}
+
+div.row>a>.img-responsive {
+	margin: 15px;
+}
+
+.dotted-underline {
+	border-bottom: 1px dotted #428bca;
+}
+
+.change-log-panel .panel-heading {
+	position: relative;
+}
+
+.change-log-panel .btn-download {
+	position: absolute;
+	right: 7px;
+	font-size: 12px;
+	top: 7px;
+	color: #fff !important;
+	padding: 2px 5px;
+}
+.btn-detail {
+	position: absolute;
+	right: 22px;
+	font-size: 12px;
+	top: 7px;
+	padding: 2px 5px;
+}
+
+.navbar-default .navbar-brand {
+  color: #CB4427 !important;
+}
+.navbar-default .navbar-brand a:hover {
+  color: #CB4427;
+}
+.navbar-default .navbar-brand a:visited {
+  color: #CB4427;
+}
+
+.card {
+  border-bottom:  solid 1px #eee;
+	margin-bottom: 10px;
+}
+
+.logo {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+    margin-right: 5px;
+		position: relative;
+		background: url('../images/brand/canthobox_small.png');
+}
+.navbar-brand {
+	padding: 3px;
+	font-weight: bold;
+}
+.logo .l {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: orange;
+    position: absolute; }
+.logo .l.l1 {
+  bottom: 0;
+  left: 0; }
+.logo .l.l2 {
+  width: 7px;
+  height: 7px;
+  bottom: 13px;
+  left: 10px; }
+.logo .l.l3 {
+  width: 7px;
+  height: 7px;
+  bottom: 4px;
+  left: 17px; }
+.logo .l.l4 {
+  bottom: 13px;
+  left: 25px; }
+.logo .l.l5 {
+  bottom: 0;
+  left: 34px; }
+.iffyTip {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.carousel-control.left {
+	background-image: none;
+}
+.carousel-control.right {
+	background-image: none;
+}
+
+.cke_chrome {
+    display: block;
+    padding: 0;
+    border: 1px solid #ccc !important;
+    box-shadow: 0 0 1px 0px rgba(172,181,194,0.56) !important;
+}
+
+.carousel-caption {
+		right: 1px;
+		left: 1px;
+		bottom: 0px;
+		padding-bottom: 5px;
+}
+
+.modal-header {
+	padding: 9px 15px;
+	background-color: #afccba;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-top-right-radius: 6px;
+	-moz-border-radius-topleft: 6px;
+	-moz-border-radius-topright: 6px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+  }
+  .modal-footer {
+	padding: 9px 15px;
+  }
+
+	.itemlist .panel {
+		margin-bottom: 10px;
+	}
+
+	.itemlist .item_title {
+		font-size: 16px;
+    padding-bottom: 5px;
+	}
+	.itemlist .item_title a {
+		text-decoration: none;
+    color: #09a0db;
+		font-weight: bold;
+	}
+	.itemlist .item_cat {
+		font-size: 14px;
+    padding-bottom: 5px;
+	}
+	.itemlist .item_cat a {
+		text-decoration: none;
+    color: #505050;
+	}
+	.itemlist .item_location {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #777;
+	}
+	.itemlist .item_location a {
+		text-decoration: none;
+    color: #777;
+	}
+	.itemlist .item_money {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #CB4427;
+	}
+
+	.itemListSmall .item_title {
+		font-size: 13px;
+    padding-bottom: 5px;
+	}
+	.itemListSmall .item_title a {
+		text-decoration: none;
+    color: #09a0db;
+		font-weight: bold;
+	}
+	.itemListSmall .item_cat {
+		font-size: 13px;
+    padding-bottom: 5px;
+	}
+	.itemListSmall .item_cat a {
+		text-decoration: none;
+    color: #505050;
+	}
+	.itemListSmall .item_location {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #777;
+	}
+	.itemListSmall .item_location a {
+		text-decoration: none;
+    color: #777;
+	}
+	.itemListSmall .item_money {
+		font-size: 12px;
+    padding-bottom: 5px;
+		color: #CB4427;
+	}
+
+	.itemListSmall .item_date {
+    padding-bottom: 5px;
+		color: #777;
+  }
+	.itemListSmall .item_title_news {
+		font: 700 14px arial;
+    color: #333;
+    position: relative;
+		margin-bottom: 5px;
+  }
+	.needhover:hover {
+		box-sizing: border-box;
+		-webkit-box-shadow: 0px 0px 12px 0px rgba(168,168,168,1);
+		-moz-box-shadow: 0px 0px 12px 0px rgba(168,168,168,1);
+		box-shadow: 0px 0px 12px 0px rgba(168,168,168,1);
+
+
+	}
+
+	.panel-news {
+		border-left: solid 5px #AFCCBA;
+		background: #F2F7F4;
+	}
+.top-buffer { margin-top:20px; }

@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/layout.css" />
 <link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/mobile.css" />
 <link rel="stylesheet" href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/desktop.css" />
+<link rel="stylesheet" href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
 
 <!-- DataTables -->
