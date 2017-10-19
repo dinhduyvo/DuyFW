@@ -92,6 +92,11 @@ define('PAGE_TYPES', array(
             array("name" => "Liên kết", "code"=>"link"),
             array("name" => "Controller", "code"=>"controller")
     ));
+define('PAGE_PERMISSIONS', array(
+            array("name" => "Tất cả", "code"=>"ALL"),
+            array("name" => "Quản trị", "code"=>"ADMIN"),
+            array("name" => "Quản lý nội dung", "code"=>"MOD")
+    ));
 define('DISPLAY_TYPES', array(
             array("name" => "Hiển thị", "code"=>"1"),
             array("name" => "Ẩn", "code"=>"0")

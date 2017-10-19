@@ -20,15 +20,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/animate.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/bootsnav.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/<?=DUYTEMPLATE?>css/style.css" rel="stylesheet">
-    
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 </head>
-<body ng-controller="LoginController as $loginctrl">     
-        
+<body ng-controller="LoginController as $loginctrl">
+
     <!-- Start Navigation -->
     <nav class="navbar navbar-default bootsnav navbar-fixed-top">
         <!-- Start Top Search -->
@@ -43,43 +43,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <!-- End Top Search -->
 
-        <div class="container">            
+        <div class="container">
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
                 <ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                            <i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
-                        </a>
-                        <ul class="dropdown-menu cart-list">
-                            <li>
-                                <a href="#" class="photo"></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p>2x - <span class="price">$99.99</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"></a>
-                                <h6><a href="#">Omnes ocurreret</a></h6>
-                                <p>1x - <span class="price">$33.33</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"></a>
-                                <h6><a href="#">Agam facilisis</a></h6>
-                                <p>2x - <span class="price">$99.99</span></p>
-                            </li>
-                            <li class="total">
-                                <span class="pull-right"><strong>Total</strong>: $0.00</span>
-                                <a href="#" class="btn btn-default btn-cart">Cart</a>
-                            </li>
-                        </ul>
-                    </li>
+									<?php if ($this->ion_auth->logged_in()) {
+										?>
+										<li>
+												<a data-toggle="modal" href="<?php echo site_url('auth/logout') ?>">
+													<i class="fa fa-user"></i> <?php echo $userlogin->last_name ." ". $userlogin->first_name ?>
+												</a>
+										</li>
+										<?php
+									}
+									else {
+									?>
                     <li>
                         <a data-toggle="modal" href='#modal-id'>
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-user"></i> Đăng nhập
                         </a>
-                        
+
                     </li>
+									<?php } ?>
                     <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                     <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
                 </ul>
@@ -93,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </button>
                 <a class="navbar-brand" href="<?php echo site_url(""); ?>">
 					<div class="logo">
-						
+
 					</div>
 					CanthoBox.vn
 				</a>
@@ -141,10 +126,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					}
 					 ?>
 
-                    
+
                 </ul>
             </div><!-- /.navbar-collapse -->
-        </div>   
+        </div>
 
         <!-- Start Side Menu -->
         <div class="side">
@@ -246,10 +231,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
     <!-- End Content -->
-    
-	
+
+
     <!-- Bootsnavs -->
     <script src="<?=base_url()?>assets/<?=DUYTEMPLATE?>js/bootsnav.js"></script>
-
 </body>
 </html>

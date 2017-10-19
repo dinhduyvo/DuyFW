@@ -49,6 +49,7 @@
         				        '',
         								50)?>
           <?php echo $this->mf->createSelectFull("type", PAGE_TYPES,  isset($data)&&(!$isposted)?$data->type:set_value('type'), "Loại", "--- Chọn loại trang ---"); ?>
+          <?php echo $this->mf->createSelectFull("permission", PAGE_PERMISSIONS,  isset($data)&&(!$isposted)?$data->permission:set_value('permission'), "Quyền truy cập", "--- Chọn quyền truy cập ---"); ?>
           <?php echo $this->mf->createTextBox(
         				        'link',
         				        isset($data)&&(!$isposted)?$data->link:set_value('link'),

@@ -78,6 +78,7 @@ class AdminPage extends MY_Controller {
 		$page->title = $this->input->post('title');
 		$page->link_name = $this->input->post('link_name');
 		$page->type = $this->input->post('type');
+		$page->permission = $this->input->post('permission');
 		if ($this->input->post('parent')>0) {
 			$page->parent = $this->input->post('parent');
 			$maxorder = R::getCell('SELECT max(disorder) FROM dpages WHERE parent = ?',[$this->input->post('parent')]);
@@ -115,6 +116,7 @@ class AdminPage extends MY_Controller {
 		$page->title = $this->input->post('title');
 		$page->link_name = $this->input->post('link_name');
 		$page->type = $this->input->post('type');
+		$page->permission = $this->input->post('permission');
 		if ($this->input->post('parent')>0) {
 			if($this->input->post('parent') != $page->parent){
 				$maxorder = R::getCell('SELECT max(disorder) FROM dpages WHERE parent = ?',[$this->input->post('parent')]);
